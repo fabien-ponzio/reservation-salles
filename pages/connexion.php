@@ -31,7 +31,7 @@ if (!empty($login) && (!empty($password))) {
                 $_SESSION['connected'] == true; 
                 $_SESSION['utilisateur'] = $utilisateur['login']; 
                 $_SESSION['id'] = $utilisateur['id'];
-                header(Location:'profil.php');
+                header("Location:'profil.php'");
             }
             else {
                 echo "Mot de passe incorrect";
