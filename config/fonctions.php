@@ -6,34 +6,19 @@ function secure($var){
 }
 
 //--------------------------------------- CONNEXION -------------------------------------------------------//
+// je créée fonction connect incluant variables bdd, login et password {}
+//j'appelle la fonction secure sur les variables login et password 
+//IF champs login et password ne sont pas vides alors ELSE = identifiant incorrect 
+// variable GetAllInfo : $bdd, "selectionne tout dans la table utilisateur ou login qui est passén par secure = login entré "
+// variable AllUserInfo qui sera un fetch assoc de GetAllInfos
+// IF AllUserInfo existe alors ELSE = Identifiant inconnu
+// IF password_verify password en claire == password crypté en bdd 
+//on initialise la session et on fait un redirect sur profil.php
+// ELSE "mot de passe incorrect"
 
-function connect($bdd, $login, $password){
-    secure($login, $password); 
-
-    if (!empty($login) && !empty($password)) {
-        $verification = $bdd -> prepare("SELECT FROM utilisateurs WHERE login=':login'");
-        $verification -> bindValue(':login', $login);
-        $verification -> execute();
-
-        $count = $verification -> fetchAll(PDO::FETCH_ASSOC); 
-        $query_all = $bdd -> prepare("SELECT * FROM utilisateurs WHERE login=':login'");
-
-        else {
-            echo"Identifiant incorrect";
-        }
-
-        if ($count) {
-            $user = $query_all -> fetchAll(PDO::FETCH_ASSOC);
-            else {
-                echo"Identifiant inconnu";
-            }
-        }
-
-    }
-
-
-
-}
+// function connect()
 
 
 ?>
+
+
