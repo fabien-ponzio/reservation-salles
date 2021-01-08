@@ -36,4 +36,7 @@ public function disconnect(){
 unset($this->id,$this->login,$this->password);
 }
 }
+
 ?>
+
+//password_hash($password, PASSWORD_DEFAULT)
