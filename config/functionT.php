@@ -23,12 +23,17 @@ public function update($login,$password){
     $pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root','');
     $id = $this->id;
     $stmt = $pdo->prepare("UPDATE utilisateurs SET login = :login, password = :password WHERE id = :id");
+    $stmt->bindValue(1,$login);
+    $stmt->bindValue(2,$password);
     $stmt->execute([
         ':id' => $id,
         ':login' => $login,
         ':password' => $password
     ]);
 }
+//Deconnexion
+public function disconnect(){
+unset($this->id,$this->login,$this->password);
 }
-
+}
 ?>
