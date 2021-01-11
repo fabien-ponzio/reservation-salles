@@ -2,9 +2,15 @@
 session_start();
 require '../config/functionT.php';
 $newuser = new User();
+// var_dump($newuser);
+if (isset($_POST["register"])) {
+    $login=$_POST["login"];
+    $password=$_POST["password"];
+    var_dump($password);
+    var_dump($login);
 
-$newuser->register('Thejeanpascal','123');
-var_dump($newuser);
+    $newuser->register($login,$password);
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +21,7 @@ var_dump($newuser);
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form action="" method="POST">
     <label for="login">Id</label>
     <input type="text" name="login">
     <label for="password">Mdp</label>

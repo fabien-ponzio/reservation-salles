@@ -15,7 +15,7 @@ require_once('../config/bdd.php');
 if(isset($_POST['connect'])){
 $login = $_POST['login'];
 $password = $_POST['password'];
-secure($login);
+// secure($login);
 
 
 if (!empty($login) && (!empty($password))) {
@@ -24,13 +24,14 @@ if (!empty($login) && (!empty($password))) {
     $GetAllInfo->execute(); 
 
     $AllUserInfo = $GetAllInfo->fetch(PDO::FETCH_ASSOC);
-    var_dump($AllUserInfo);
-
-        if ($GetAllInfo->rowCount()>0) {
+    var_dump($AllUserInfo['password']);
+    var_dump($password);
+        if (!empty($AllUserInfo)) {
+            var_dump(password_verify($password, $AllUserInfo['password']));
             if (password_verify($password, $AllUserInfo['password'])) {
                 $_SESSION['connected'] == true; 
-                $_SESSION['utilisateur'] = $utilisateur['login']; 
-                $_SESSION['id'] = $utilisateur['id'];
+                $_SESSION['utilisateur'] = $AllUserInfo['login']; 
+                $_SESSION['id'] = $AllUserInfo['id'];
                 header('Location:profil.php');
             }
             else {
