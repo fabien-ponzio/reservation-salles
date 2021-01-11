@@ -24,14 +24,14 @@ if (!empty($login) && (!empty($password))) {
     $GetAllInfo->execute(); 
 
     $AllUserInfo = $GetAllInfo->fetch(PDO::FETCH_ASSOC);
-    // var_dump($AllUserInfo);
+    var_dump($AllUserInfo);
 
         if ($GetAllInfo->rowCount()>0) {
             if (password_verify($password, $AllUserInfo['password'])) {
                 $_SESSION['connected'] == true; 
                 $_SESSION['utilisateur'] = $utilisateur['login']; 
                 $_SESSION['id'] = $utilisateur['id'];
-                header("Location:'profil.php'");
+                header('Location:profil.php');
             }
             else {
                 echo "Mot de passe incorrect";
