@@ -1,51 +1,9 @@
 
 
 <?php 
-require_once('../config/fonctions.php');
 require_once('../config/bdd.php');
-// je créée fonction connect incluant variables bdd, login et password {}
-//j'appelle la fonction secure sur les variables login et password 
-//IF champs login et password ne sont pas vides alors ELSE = identifiant incorrect 
-// variable GetAllInfo : $bdd, "selectionne tout dans la table utilisateur ou login qui est passén par secure = login entré "
-// variable AllUserInfo qui sera un fetch assoc de GetAllInfos
-// IF AllUserInfo existe alors ELSE = Identifiant inconnu
-// IF password_verify password en claire == password crypté en bdd 
-//on initialise la session et on fait un redirect sur profil.php
-// ELSE "mot de passe incorrect"
-if(isset($_POST['connect'])){
-$login = $_POST['login'];
-$password = $_POST['password'];
-// secure($login);
-
-
-if (!empty($login) && (!empty($password))) {
-    $GetAllInfo = $bdd -> prepare("SELECT * FROM utilisateurs WHERE login = :login");
-    $GetAllInfo->bindValue(':login', $login);
-    $GetAllInfo->execute(); 
-
-    $AllUserInfo = $GetAllInfo->fetch(PDO::FETCH_ASSOC);
-    var_dump($AllUserInfo['password']);
-    var_dump($password);
-        if (!empty($AllUserInfo)) {
-            var_dump(password_verify($password, $AllUserInfo['password']));
-            if (password_verify($password, $AllUserInfo['password'])) {
-                $_SESSION['connected'] == true; 
-                $_SESSION['utilisateur'] = $AllUserInfo['login']; 
-                $_SESSION['id'] = $AllUserInfo['id'];
-                header('Location:profil.php');
-            }
-            else {
-                echo "Mot de passe incorrect";
-            }
-        }
-        else {
-            echo"Identifiant inconnu";
-        }
-}else {
-    echo"Identifiant incorrect";
-}
-}
-
+require_once('../config/fonctions.php');
+connect();
 ?>
 
 <!DOCTYPE html>
