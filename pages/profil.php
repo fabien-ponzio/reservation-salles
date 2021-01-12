@@ -1,30 +1,11 @@
 <?php
 session_start();
-require '../config/functionT.php';
+include '../config/functionT.php';
 $newuser = new User();
-
-if (isset($_SESSION['login'])){
-    $login = $_SESSION['login'];
-    
-
-if(isset($_POST['newlogin']) AND !empty($_POST['newlogin']) AND $newuser['login'] != $_POST['newlogin']){
-    $newlogin = ($_POST['newlogin']);
-    update($login);
+$db = new PDO('mysql:host=localhost;dbname=reservationsalles','root','');
+if(isset($_POST['submit-newlog']) OR isset($_POST['submit-newpw'])){
+    update();
 }
-if(isset($_POST['oldpassword']) AND !empty($_POST['newpassword']) AND $newuser['password'] != $_POST['newpassword']){
-    if(isset($_POST['oldpassword']) AND !empty($_POST['oldpassword']) AND $newuser['password'] == $_POST['oldpassword']){
-        $password = $newuser['password'];
-        $newpassword = ($_POST['newpassword']);
-        update($password);
-    }
-}
-}
-
-//$newuser->update('THEjeanjean','1234');
-//var_dump($newuser);
-
-
-
 ?>
 
 
