@@ -33,13 +33,16 @@ public function register($login,$password){
 }
 //Update
 public function update($login,$password){
+   //$sql = "UPDATE utilisateurs SET login=:login, password=:password WHERE id=;id";
+   //$pdo->prepare($sql)->execute($)
+
     $pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root','');
-    $id = $this->id;
+    $id = $this->$_SESSION['id'];
     $stmt = $pdo->prepare("UPDATE utilisateurs SET login = :login, password = :password WHERE id = :id");
-    $stmt->bindValue(1,$login);
-    $stmt->bindValue(2,$password);
+    $stmt->bindValue(1,$id);
+    $stmt->bindValue(2,$login);
+    $stmt->bindValue(3,$password);
     $stmt->execute([
-        ':id' => $id,
         ':login' => $login,
         ':password' => $password
     ]);

@@ -20,7 +20,8 @@ if(isset($_POST['oldpassword']) AND !empty($_POST['newpassword']) AND $newuser['
 }
 }
 
-
+//$newuser->update('THEjeanjean','1234');
+//var_dump($newuser);
 
 
 
@@ -29,7 +30,7 @@ if(isset($_POST['oldpassword']) AND !empty($_POST['newpassword']) AND $newuser['
 
 <form action="profil.php" method="POST" id="form-pro">
                             <label for="newlogin"></label>
-                            <input type="text"  name="newlogin" placeholder="Login" value=<?php if(isset($user['login'])){echo $user['login'] ;} else {echo "";} ?> ><br>
+                            <input type="text"  name="newlogin" placeholder="Login" value=<?php if(isset($newuser->login)){echo $newuser->login ;} else {echo "";} ?> > <br>
                             <input type="submit" name="submit-newlog" value="submit" class='boutton'><br>
                             <label for="oldpassword"></label>
                             <input type="password" name="oldpassword" placeholder="oldpassword"><br>
