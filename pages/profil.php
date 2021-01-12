@@ -9,20 +9,16 @@ if (isset($_SESSION['login'])){
 
 if(isset($_POST['newlogin']) AND !empty($_POST['newlogin']) AND $newuser['login'] != $_POST['newlogin']){
     $newlogin = ($_POST['newlogin']);
-    update($login);
+    // update($login);
 }
 if(isset($_POST['oldpassword']) AND !empty($_POST['newpassword']) AND $newuser['password'] != $_POST['newpassword']){
     if(isset($_POST['oldpassword']) AND !empty($_POST['oldpassword']) AND $newuser['password'] == $_POST['oldpassword']){
         $password = $newuser['password'];
         $newpassword = ($_POST['newpassword']);
-        update($password);
+    // update($password);
     }
 }
 }
-
-
-
-
 
 ?>
 

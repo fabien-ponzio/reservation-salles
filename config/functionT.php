@@ -31,6 +31,10 @@ public function register($login,$password){
         echo"L'identifiant existe déjà!";
     }
 }
+//connect
+public function connect($login, $password){
+    
+}
 //Update
 public function update($login,$password){
     $pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root','');
