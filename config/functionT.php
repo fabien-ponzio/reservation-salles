@@ -1,17 +1,26 @@
 <?php
- require '../config/fonctions.php';
- 
+require '../config/bdd.php';
+require '../config/fonctions.php';
 class User{
     private $id = '';
     public $login = '';
-    private $password = '';
-    
+    public $email = '';
+    public $bdd;
+  
 //inscrition
+// public function __construct()
+// {
+//     $pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root',''); 
+     
+// }
 public function register($login,$password){
     secure($login);
 
     $password = password_hash($password, PASSWORD_DEFAULT);  
-    $pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root',''); 
+
+    $bdd = new Bdd(); // A RETRAVAILLER
+    $pdo = $bdd->getbdd(); // A RETRAVAILLER
+    //$pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root',''); 
     $checklogin = $pdo->prepare("SELECT login FROM utilisateurs WHERE login = :login");
     $checklogin->bindValue(':login', $login);
     $checklogin->execute(); 

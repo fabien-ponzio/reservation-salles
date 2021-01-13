@@ -1,7 +1,6 @@
 
 
 <?php 
-require_once('../config/fonctions.php');
 require_once('../config/bdd.php');
 
 if(isset($_POST['connect'])){
@@ -36,6 +35,8 @@ if (!empty($login) && (!empty($password))) {
 }
 }
 
+require_once('../config/fonctions.php');
+// connect();
 ?>
 
 <!DOCTYPE html>
