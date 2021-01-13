@@ -5,8 +5,8 @@ require_once '../config/functionT.php';
 $newuser = new User();
 $newuser->update();
 
-//$newuser->update('THEjeanjean','123');
-//var_dump($newuser);
+$newuser->update('THEjeanjean','123');
+var_dump($newuser);
 /*if (isset($_POST['submit-newlog']) OR ($_POST['submit-newpw'])){
     $update;
 }
