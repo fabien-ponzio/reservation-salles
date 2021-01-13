@@ -1,0 +1,21 @@
+#headernav{
+display: flex;
+border: solid;
+padding: 25px;
+justify-content: space-around;
+background-color: #14274e;
+border-color: #9ba4b4;
+font-family: 'Arimo', sans-serif;
+}
+
+a{
+    font-size: small;
+    text-decoration: none;
+    color: #f1f6f9;
+}
+
+a:hover{
+    font-size: x-large;
+font-family: 'Calistoga', cursive;
+transition: 1s;
+}
