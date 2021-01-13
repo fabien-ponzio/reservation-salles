@@ -1,10 +1,11 @@
 <?php
  require '../config/fonctions.php';
+ 
 class User{
     private $id = '';
     public $login = '';
-    public $email = '';
-  
+    private $password = '';
+    
 //inscrition
 public function register($login,$password){
     secure($login);
@@ -36,7 +37,23 @@ public function connect($login, $password){
     
 }
 //Update
-public function update($login,$password){
+public function update(){
+    $login=$_SESSION['utilisateur'];
+    $password=$_SESSION['password'];
+    /*if (isset($_SESSION['login'])){
+        $login = $_SESSION['login'];
+        
+    
+    if(isset($_POST['newlogin']) AND !empty($_POST['newlogin']) AND $newuser['login'] != $_POST['newlogin']){
+        $newlogin = ($_POST['newlogin']);
+    }
+    if(isset($_POST['oldpassword']) AND !empty($_POST['newpassword']) AND $newuser['password'] != $_POST['newpassword']){
+        if(isset($_POST['oldpassword']) AND !empty($_POST['oldpassword']) AND $newuser['password'] == $_POST['oldpassword']){
+            $password = $newuser['password'];
+            $newpassword = ($_POST['newpassword']);
+        }
+    }
+    }*/
     $pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root','');
     $id = $this->id;
     $stmt = $pdo->prepare("UPDATE utilisateurs SET login = :login, password = :password WHERE id = :id");
@@ -47,7 +64,8 @@ public function update($login,$password){
         ':login' => $login,
         ':password' => $password
     ]);
-}
+    }
+
 //Deconnexion
 public function disconnect(){
 unset($this->id,$this->login,$this->password);

@@ -1,24 +1,32 @@
 <?php
 session_start();
-require '../config/functionT.php';
+var_dump($_SESSION);
+require_once '../config/functionT.php';
 $newuser = new User();
+$newuser->update();
 
-if (isset($_SESSION['login'])){
+//$newuser->update('THEjeanjean','123');
+//var_dump($newuser);
+/*if (isset($_POST['submit-newlog']) OR ($_POST['submit-newpw'])){
+    $update;
+}
+*/
+/*if (isset($_SESSION['login'])){
     $login = $_SESSION['login'];
     
 
 if(isset($_POST['newlogin']) AND !empty($_POST['newlogin']) AND $newuser['login'] != $_POST['newlogin']){
     $newlogin = ($_POST['newlogin']);
-    // update($login);
+    //update($login);
 }
 if(isset($_POST['oldpassword']) AND !empty($_POST['newpassword']) AND $newuser['password'] != $_POST['newpassword']){
     if(isset($_POST['oldpassword']) AND !empty($_POST['oldpassword']) AND $newuser['password'] == $_POST['oldpassword']){
         $password = $newuser['password'];
         $newpassword = ($_POST['newpassword']);
-    // update($password);
+        //update();
     }
 }
-}
+}*/
 
 ?>
 
@@ -34,4 +42,4 @@ if(isset($_POST['oldpassword']) AND !empty($_POST['newpassword']) AND $newuser['
                             <input type="submit" name="submit-newpw" value="submit" class='boutton'><br>
 
                             
-                    </form>
+</form>
