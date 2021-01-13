@@ -20,8 +20,13 @@
         <a href='$path_profil'></a>
         <a href='$path_planning'></a>
         <a href='$path_booking'></a>
-        <a href='$path_BookingForm'></a>";
+        <a href='$path_BookingForm'></a>
+        <form action='$deconnexion'>
+        <input id='deco_bouton' type='submit' value='Deconnexion'>
+        </form>";
     }
+        
+    
     // Le chemin de ces variables est à définir sur chaques pages
     else {
         echo"       

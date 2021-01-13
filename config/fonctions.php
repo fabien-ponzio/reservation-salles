@@ -12,8 +12,10 @@ function secure($var){
 
 //--------------------------------------- CONNEXION -------------------------------------------------------//
 
-function connect(){
-$db  = BDD();
+// function connect(){
+// $db  = BDD();
+$objet = new Bdd(); // A RETRAVAILLER
+$db = $objet->getbdd(); // A RETRAVAILLER
 // $bdd = NEW PDO('mysql:dbname=reservationsalles;host=127.0.0.1', 'root','');
 if(isset($_POST['connect'])){
     $login = $_POST['login'];
@@ -48,7 +50,7 @@ if(isset($_POST['connect'])){
         echo"Identifiant incorrect";
     }
     }
-    }
+    // }
     ?>
 
 
