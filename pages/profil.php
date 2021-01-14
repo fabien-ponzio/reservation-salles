@@ -1,22 +1,18 @@
 <?php
 session_start();
-//var_dump($_SESSION);
-/*include '../config/functionT.php';
-$newuser = new User();*/
-
 
     try{
-        $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); echo 'coucou1';
+        $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
     }
     catch (Exeception $e){
         die('Erreur : ' . $e->getMessage());
     }
-     var_dump($_SESSION);
+    
      $login = $_SESSION['utilisateur'];
      $id =$_SESSION['id'];
 
      if(isset($_POST['submit']) AND $_POST['newpassword'] != $_POST['confpassword']){
-         $error = 'Mot de passe et confirmation mot de passe différents';echo 'coucou4';
+         $error = 'Mot de passe et confirmation mot de passe différents';
      }
      else{
          if(isset($_POST['submit'])){ echo 'coucou5';
@@ -34,10 +30,7 @@ $newuser = new User();*/
              $_SESSION['utilisateur'] =$newlogin;
              $login = $newlogin;
             } 
-         }
-      
-
-   
+         }   
      if (isset($ok)) {
          echo $ok;
      }
