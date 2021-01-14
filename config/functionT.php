@@ -45,7 +45,7 @@ public function connect($login, $password){
     
 }
 //Update
-public function update($login,$password){
+/*public function update($login,$password){
    //$sql = "UPDATE utilisateurs SET login=:login, password=:password WHERE id=;id";
    //$pdo->prepare($sql)->execute($)
    if (isset($_SESSION['login'])){
@@ -72,7 +72,7 @@ $stmt->execute([
     ':password' => $password
 ]);
 }
-}
+}*/
 
 //Deconnexion
 public function disconnect(){

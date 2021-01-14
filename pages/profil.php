@@ -1,35 +1,41 @@
 <?php
 session_start();
-var_dump($_SESSION);
+//var_dump($_SESSION);
+/*include '../config/functionT.php';
+$newuser = new User();*/
+
+
     try{
-        $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
+        $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); echo 'coucou1';
     }
     catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
-    
-     //$login = $_SESSION['utilisateur'];
-     $id = $_SESSION['id'];
 
+
+     $login = $_SESSION['utilisateur'];
      if(isset($_POST['submit']) AND $_POST['newpassword'] != $_POST['confpassword']){
-         $error = 'Mot de passe et confirmation mot de passe différents';
+         $error = 'Mot de passe et confirmation mot de passe différents';echo 'coucou4';
      }
      else{
-         if(isset($_POST['submit'])){ 
+         if(isset($_POST['submit'])){ echo 'coucou5';
              $newlogin=htmlspecialchars($_POST['newlogin']);
              $password = password_hash($_POST['newpassword'], PASSWORD_DEFAULT);
-             $update= $db ->prepare("UPDATE utilisateurs SET login = :newlogin, password = :newpassword WHERE id = :id");
+             $update= $db ->prepare("UPDATE utilisateurs SET login = :newlogin, password = :newpassword WHERE login = :login");
+             var_dump($update);
              $update ->execute(array(
                 'newlogin' => $newlogin,
                 'newpassword' => $password,
-                'id' => $id,
+                'login' => $login,
              ));
-             
+             var_dump($update);
              $ok = 'Profil modifié';
              $_SESSION['utilisateur'] =$newlogin;
              $login = $newlogin;
             } 
-         }   
+         }
+      
+   
      if (isset($ok)) {
          echo $ok;
      }
