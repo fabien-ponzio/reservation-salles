@@ -4,7 +4,6 @@ require '../config/fonctions.php';
 class User{
     private $id = '';
     public $login = '';
-    public $email = '';
     public $bdd;
   
 //inscrition

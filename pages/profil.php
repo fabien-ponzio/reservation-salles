@@ -1,31 +1,30 @@
 <?php
 session_start();
-
+var_dump($_SESSION);
     try{
         $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
     }
-    catch (Exeception $e){
+    catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
     
-     $login = $_SESSION['utilisateur'];
-     $id =$_SESSION['id'];
+     //$login = $_SESSION['utilisateur'];
+     $id = $_SESSION['id'];
 
      if(isset($_POST['submit']) AND $_POST['newpassword'] != $_POST['confpassword']){
          $error = 'Mot de passe et confirmation mot de passe différents';
      }
      else{
-         if(isset($_POST['submit'])){ echo 'coucou5';
+         if(isset($_POST['submit'])){ 
              $newlogin=htmlspecialchars($_POST['newlogin']);
              $password = password_hash($_POST['newpassword'], PASSWORD_DEFAULT);
              $update= $db ->prepare("UPDATE utilisateurs SET login = :newlogin, password = :newpassword WHERE id = :id");
-             var_dump($update);
              $update ->execute(array(
                 'newlogin' => $newlogin,
                 'newpassword' => $password,
                 'id' => $id,
              ));
-             var_dump($update);
+             
              $ok = 'Profil modifié';
              $_SESSION['utilisateur'] =$newlogin;
              $login = $newlogin;
