@@ -4,7 +4,7 @@ require '../config/fonctions.php';
 class User{
     private $id = '';
     public $login = '';
-    public $bdd;
+    //public $bdd;
   
 //inscrition
 // public function __construct()
@@ -12,10 +12,10 @@ class User{
 //     $pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root',''); 
      
 // }
-public function register($login,$password){
+public function register($login,$password,$conf){
     secure($login);
-
-    $password = password_hash($password, PASSWORD_DEFAULT);  
+    if($password==$conf){
+      
 
     $bdd = new Bdd(); // A RETRAVAILLER
     $pdo = $bdd->getbdd(); // A RETRAVAILLER
@@ -24,6 +24,7 @@ public function register($login,$password){
     $checklogin->bindValue(':login', $login);
     $checklogin->execute(); 
     $count= $checklogin->fetch();
+    $password = password_hash($password, PASSWORD_DEFAULT);
     if (!$count) {
         $stmt = $pdo->prepare("INSERT INTO utilisateurs (login,password) VALUE (?,?)");
         $stmt->bindValue(1,$login);
@@ -39,7 +40,7 @@ public function register($login,$password){
     else {
         echo"L'identifiant existe déjà!";
     }
-}
+}}
 //connect
 public function connect($login, $password){
     

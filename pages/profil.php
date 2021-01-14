@@ -1,8 +1,8 @@
 <?php
 session_start();
-//var_dump($_SESSION);
-/*include '../config/functionT.php';
-$newuser = new User();*/
+var_dump($_SESSION);
+include '../config/functionT.php';
+$newuser = new User('id','login');
 
 
     try{

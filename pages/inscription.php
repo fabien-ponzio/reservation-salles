@@ -3,15 +3,19 @@ session_start();
 require '../config/functionT.php';
 
 $newuser = new User();
-// var_dump($newuser);
+
+
+ if($_POST['password'] != $_POST['confirmPW']){
+        echo "Les mots de passe non sont pas les meme";
+}
 if (isset($_POST["register"])) {
     $login=$_POST["login"];
     $password=$_POST["password"];
-    // var_dump($password);
-    // var_dump($login);
+    $conf = $_POST['confirmPW'];
+    
+    $newuser->register($login,$password,$conf);
+  }   
 
-    $newuser->register($login,$password);
-}
 ?>
 
 <!DOCTYPE html>
