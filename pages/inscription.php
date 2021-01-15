@@ -12,6 +12,7 @@ if (isset($_POST["register"])) {
 
     $user->register($login,$password);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
