@@ -2,8 +2,8 @@
 session_start();
 var_dump($_SESSION);
 include '../config/functionT.php';
-$newuser = new User('id','login');
-
+$newuser = new User($id,$login);
+var_dump($newuser);
 
     try{
         $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); echo 'coucou1';
@@ -39,7 +39,7 @@ $newuser = new User('id','login');
      if (isset($ok)) {
          echo $ok;
      }
-
+    
 ?>
 
 

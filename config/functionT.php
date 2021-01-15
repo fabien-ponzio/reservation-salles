@@ -5,6 +5,13 @@ class User{
     private $id = '';
     public $login = '';
     //public $bdd;
+
+    public function __construct(){
+    }
+    public function setUser($user){
+        $this->id =$_SESSION['id'];
+    }
+    
   
 //inscrition
 // public function __construct()
@@ -14,7 +21,7 @@ class User{
 // }
 public function register($login,$password,$conf){
     secure($login);
-    if($password==$conf){
+    if($_POST["password"]==$_POST['confirmPW']){
       
 
     $bdd = new Bdd(); // A RETRAVAILLER
