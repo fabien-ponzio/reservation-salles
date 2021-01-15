@@ -2,14 +2,14 @@
 session_start();
 require '../config/functionT.php';
 
-$user = new User($id,$login);
+$user = new User();
 var_dump($user);
 
 
 if (isset($_POST["register"])) {
-    //$login=$_POST["login"];
-    //$password=$_POST["password"];
-    //$conf = $_POST['confirmPW'];
+    $login=$_POST["login"];
+    $password=$_POST["password"];
+    $conf = $_POST['confirmPW'];
     
     $user->register($login,$password,$conf);
   }   

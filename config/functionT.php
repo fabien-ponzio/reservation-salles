@@ -1,4 +1,5 @@
 <?php
+
 require '../config/bdd.php';
 require '../config/fonctions.php';
 class User{
@@ -13,80 +14,54 @@ class User{
     }
     
   
-//inscrition
-// public function __construct()
-// {
-//     $pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root',''); 
-     
-// }
-public function register($login,$password,$conf){
-    secure($login);
-    if($_POST["password"]==$_POST['confirmPW']){
-      
+public function register($login,$password, $confirmPW){
 
-    $bdd = new Bdd(); // A RETRAVAILLER
-    $pdo = $bdd->getbdd(); // A RETRAVAILLER
-    //$pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root',''); 
-    $checklogin = $pdo->prepare("SELECT login FROM utilisateurs WHERE login = :login");
-    $checklogin->bindValue(':login', $login);
-    $checklogin->execute(); 
-    $count= $checklogin->fetch();
-    $password = password_hash($password, PASSWORD_DEFAULT);
-    if (!$count) {
-        $stmt = $pdo->prepare("INSERT INTO utilisateurs (login,password) VALUE (?,?)");
-        $stmt->bindValue(1,$login);
-        $stmt->bindValue(2,$password);
-        $stmt->execute();
-        $id = $pdo->lastInsertId();
-        $this->id = $id;
-        $this->login = $login;
-        $this->password = $password;
-        header('Location:connexion.php');
-        return array($login,$password);
+    // secure($login);
+
+if (!empty($login) && !empty($password) && !empty($confirmPW)){ // else "les champs doivent être remplis"
+    $loglength = strlen($login);
+    $passlength = strlen($password);
+    $confirmpasslength = strlen($confirmPW);
+
+    if(($loglength >=5) && ($passlength >=5) && ($confirmpasslength >=5)){ // else "veuillez insérer au moins 5"
+
+        if($_POST["password"]==$_POST['confirmPW']){ // else "Les mots de passe ne correspondent pas"
+                $bdd = new Bdd(); 
+                $pdo = $bdd->getbdd(); 
+                $checklogin = $pdo->prepare("SELECT login FROM utilisateurs WHERE login = :login");
+                $checklogin->bindValue(':login', $login);
+                $checklogin->execute(); 
+                $count= $checklogin->fetch();
+                $password = password_hash($password, PASSWORD_DEFAULT);
+
+                if (!$count) {
+                    $stmt = $pdo->prepare("INSERT INTO utilisateurs (login,password) VALUE (?,?)");
+                    $stmt->bindValue(1,$login);
+                    $stmt->bindValue(2,$password);
+                    $stmt->execute();
+                    $id = $pdo->lastInsertId();
+                    $this->id = $id;
+                    $this->login = $login;
+                    $this->password = $password;
+                    header('Location:connexion.php');
+                    return array($login,$password);
+                }
+                else {
+                    echo"Ce nom d'utilisateur est déjà pris";
+                }
+            }
+            else {
+                echo"Les mots de passes insérés ne correspondent pas";
+            }
+        }
+        else {
+            echo"Veuillez insérer au moins 5 caractères dans chaques champs";
+        }
     }
     else {
-        echo"L'identifiant existe déjà!";
+        echo "Les champs doivent être remplis"; 
     }
-}}
-//connect
-public function connect($login, $password){
-    
-}
-//Update
-/*public function update($login,$password){
-   //$sql = "UPDATE utilisateurs SET login=:login, password=:password WHERE id=;id";
-   //$pdo->prepare($sql)->execute($)
-   if (isset($_SESSION['login'])){
-    $login = $_SESSION['login'];
-    
-
-if(isset($_POST['newlogin']) AND !empty($_POST['newlogin']) AND $newuser['login'] != $_POST['newlogin']){
-    $newlogin = ($_POST['newlogin']);
-}
-if(isset($_POST['oldpassword']) AND !empty($_POST['newpassword']) AND $newuser['password'] != $_POST['newpassword']){
-    if(isset($_POST['oldpassword']) AND !empty($_POST['oldpassword']) AND $newuser['password'] == $_POST['oldpassword']){
-        $password = $newuser['password'];
-        $newpassword = ($_POST['newpassword']);
-    }
-    }
-$pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root','');
-$id = $this->$_SESSION['id'];
-$stmt = $pdo->prepare("UPDATE utilisateurs SET login = :login, password = :password WHERE id = :id");
-$stmt->bindValue(1,$id);
-$stmt->bindValue(2,$login);
-$stmt->bindValue(3,$password);
-$stmt->execute([
-    ':login' => $login,
-    ':password' => $password
-]);
-}
-}*/
-
-//Deconnexion
-public function disconnect(){
-unset($this->id,$this->login,$this->password);
 }
 }
-//password_hash($password, PASSWORD_DEFAULT)
 ?>
 
