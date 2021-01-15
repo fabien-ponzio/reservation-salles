@@ -1,7 +1,7 @@
 <?php
 session_start();
 var_dump($_SESSION);
-require '../config/functionT.php';
+require '../config/functionT.php'; 
 $user = new User;
     try{
         $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
@@ -9,15 +9,22 @@ $user = new User;
     catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
-    if(isset($_POST['debut'])){
+    //$startarray=explode(' ',$_POST['debut']);
+    //var_dump($startarray);
+    if(isset($_POST['submit'])){
+        $startarray=explode(' ',$_POST['debut']);
+        var_dump($startarray);
+        die();
         if($_POST['debut'] >= $_POST['fin']){
             $erreur = "L'heur de fin doit etre superieur l'heur de de debut";
         }
         else{
+            var_dump($_POST);
+           
             $time = $_POST['date'];
             for($i=$_POST['debut']; $i< $_POST['fin']; $i++){
                 $date = $time.' '.$i.':00:00';
-                $stmt = $db->prepare("SELECT * FROM reservation WHERE debut = :date");
+                $stmt = $db->prepare("SELECT * FROM reservations WHERE debut = :date");
                 $stmt->execute(array('date'=>$date));
                 $data = $stmt->fetch();
                 $row = $stmt->rowCount();
