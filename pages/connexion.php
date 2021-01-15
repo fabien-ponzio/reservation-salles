@@ -5,7 +5,7 @@ require_once('../config/bdd.php');
 
 
 require_once('../config/fonctions.php');
-// connect();
+//connect();
 ?>
 
 <!DOCTYPE html>

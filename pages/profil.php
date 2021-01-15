@@ -2,8 +2,8 @@
 session_start();
 var_dump($_SESSION);
 include '../config/functionT.php';
-$newuser = new User($id,$login);
-var_dump($newuser);
+//$user = new User($id,$login);
+//var_dump($user);
 
     try{
         $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); echo 'coucou1';
@@ -11,7 +11,6 @@ var_dump($newuser);
     catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
-
 
      $login = $_SESSION['utilisateur'];
      if(isset($_POST['submit']) AND $_POST['newpassword'] != $_POST['confpassword']){
