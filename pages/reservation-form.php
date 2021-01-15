@@ -12,11 +12,15 @@ $user = new User;
     //$startarray=explode(' ',$_POST['debut']);
     //var_dump($startarray);
     if(isset($_POST['submit'])){
-        $startarray=explode(' ',$_POST['debut']);
-        var_dump($startarray);
-        die();
-        if($_POST['debut'] >= $_POST['fin']){
+        var_dump($_POST['debut']);
+        $debut = new DateTime($_POST['debut']);
+        echo $debut->format('D - M - Y - H - i').'<br>';
+        $fin = new DateTime($_POST['fin']);
+        echo $fin->format('D - M - Y - H - i');
+        //die();
+        if($debut >= $fin){
             $erreur = "L'heur de fin doit etre superieur l'heur de de debut";
+            
         }
         else{
             var_dump($_POST);
