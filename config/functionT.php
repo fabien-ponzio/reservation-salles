@@ -4,7 +4,7 @@ require '../config/fonctions.php';
 class User{
     private $id = '';
     public $login = '';
-    //public $bdd;
+    public $bdd;
 
     public function __construct(){
     }
@@ -19,7 +19,7 @@ class User{
 //     $pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root',''); 
      
 // }
-public function register($login,$password,$conf){
+public function register($login,$password){
     secure($login);
     if($_POST["password"]==$_POST['confirmPW']){
       
