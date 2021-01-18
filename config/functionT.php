@@ -23,18 +23,18 @@ class User{
 public function register($login,$password){
     secure($login);
     if($_POST["password"]==$_POST['confirmPW']){
-      
+        echo"coucou";
 
     // secure($login);
 
-if (!empty($login) && !empty($password) && !empty($confirmPW)){ // else "les champs doivent être remplis"
+/*if (!empty($login) && !empty($password) && !empty($confirmPW)){ echo"coucou2";// else "les champs doivent être remplis"
     $loglength = strlen($login);
     $passlength = strlen($password);
     $confirmpasslength = strlen($confirmPW);
 
-    if(($loglength >=5) && ($passlength >=5) && ($confirmpasslength >=5)){ // else "veuillez insérer au moins 5"
+    if(($loglength >=5) && ($passlength >=5) && ($confirmpasslength >=5)){echo"coucou3";*/ // else "veuillez insérer au moins 5"
 
-        if($_POST["password"]==$_POST['confirmPW']){ // else "Les mots de passe ne correspondent pas"
+        if($_POST["password"]==$_POST['confirmPW']){echo"coucou4"; // else "Les mots de passe ne correspondent pas"
                 $bdd = new Bdd(); 
                 $pdo = $bdd->getbdd(); 
                 $checklogin = $pdo->prepare("SELECT login FROM utilisateurs WHERE login = :login");
@@ -43,7 +43,7 @@ if (!empty($login) && !empty($password) && !empty($confirmPW)){ // else "les cha
                 $count= $checklogin->fetch();
                 $password = password_hash($password, PASSWORD_DEFAULT);
 
-                if (!$count) {
+                if (!$count) { echo"coucou5";
                     $stmt = $pdo->prepare("INSERT INTO utilisateurs (login,password) VALUE (?,?)");
                     $stmt->bindValue(1,$login);
                     $stmt->bindValue(2,$password);
@@ -55,22 +55,23 @@ if (!empty($login) && !empty($password) && !empty($confirmPW)){ // else "les cha
                     header('Location:connexion.php');
                     return array($login,$password);
                 }
-                else {
-                    echo"Ce nom d'utilisateur est déjà pris";
-                }
+                //else {
+                    //echo"Ce nom d'utilisateur est déjà pris";
+                //}
             }
-            else {
-                echo"Les mots de passes insérés ne correspondent pas";
-            }
+            //else {
+                //echo"Les mots de passes insérés ne correspondent pas";
+           // }
         }
-        else {
-            echo"Veuillez insérer au moins 5 caractères dans chaques champs";
-        }
+        //else {
+            //echo"Veuillez insérer au moins 5 caractères dans chaques champs";
+        //}
     }
-    else {
-        echo "Les champs doivent être remplis"; 
-    }
-}
+    //else {
+       // echo "Les champs doivent être remplis"; 
+   // }
+//}
+//}
 }
 ?>
 
