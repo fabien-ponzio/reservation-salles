@@ -12,11 +12,11 @@ function secure($var){
 
 //--------------------------------------- CONNEXION -------------------------------------------------------//
 
-// function connect(){
+function connect(){
 // $db  = BDD();
-$objet = new Bdd(); // A RETRAVAILLER
-$db = $objet->getbdd(); // A RETRAVAILLER
-// $bdd = NEW PDO('mysql:dbname=reservationsalles;host=127.0.0.1', 'root','');
+//$objet = new Bdd(); // A RETRAVAILLER
+//$db = $objet->getbdd(); // A RETRAVAILLER
+$bdd = NEW PDO('mysql:dbname=reservationsalles;host=127.0.0.1', 'root','');
 if(isset($_POST['connect'])){
     $login = $_POST['login'];
     $password = $_POST['password'];
@@ -24,7 +24,7 @@ if(isset($_POST['connect'])){
     
     
     if (!empty($login) && (!empty($password))) {
-        $GetAllInfo = $db -> prepare("SELECT * FROM utilisateurs WHERE login = :login");
+        $GetAllInfo = $bdd -> prepare("SELECT * FROM utilisateurs WHERE login = :login");
         $GetAllInfo->bindValue(':login', $login);
         $GetAllInfo->execute(); 
     
@@ -32,7 +32,7 @@ if(isset($_POST['connect'])){
         var_dump($AllUserInfo['password']);
         var_dump($password);
             if (!empty($AllUserInfo)) {
-                var_dump(password_verify($password, $AllUserInfo['password']));
+                //var_dump(password_verify($password, $AllUserInfo['password']));
                 if (password_verify($password, $AllUserInfo['password'])) {
                     $_SESSION['connected'] == true; 
                     $_SESSION['utilisateur'] = $AllUserInfo['login']; 
@@ -50,7 +50,7 @@ if(isset($_POST['connect'])){
         echo"Identifiant incorrect";
     }
     }
-    // }
+     }
     ?>
 
 

@@ -19,10 +19,11 @@ if (isset($_POST["register"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/inscription.css">
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="POST">
+    <form id="form_register" action="" method="POST">
     <label for="login">Id</label>
     <input type="text" name="login">
     <label for="password">Mdp</label>

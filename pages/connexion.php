@@ -1,11 +1,23 @@
 
 
 <?php 
-require_once('../config/bdd.php');
-
-
+session_start();
+//require_once('../config/Db.php');
+//require_once('../config/User.php');
+//require_once('../config/bdd.php');
 require_once('../config/fonctions.php');
-//connect();
+connect();
+//$db = new Db();
+//var_dump($db);
+//$user = new User_connect();
+//var_dump($user);
+/*if (isset($_POST['login']) && isset ($_POST['password'])){ 
+
+    $login = $_POST['login'];
+    $password = $_POST['password'];
+
+    //$connexion = $user-> connectUser($login,$password);
+}*/
 ?>
 
 <!DOCTYPE html>
