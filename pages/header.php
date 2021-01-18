@@ -23,29 +23,40 @@
 
     <header>
     <nav id="headernav">
-    <?php 
-    // Le chemin de ces variables est à définir sur chaques pages
-    if (isset($_SESSION['id'])) {
+    <ul>        
+    <a class='headerlink' href='$path_index'>INDEX</a>
+    <a class='headerlink' href='$path_planning'>PLANNING</a>
+
+
+    <?php if (!isset($_SESSION['id'])) {
         echo"
-        <a class='headerlink' href='$path_index'>INDEX</a>
-        <a class='headerlink' href='$path_profil'>PROFIL</a>
-        <a class='headerlink' href='$path_planning'>PLANNING</a>
-        <a class='headerlink' href='$path_booking'>RESERVATION</a>
-        <a class='headerlink' href='$path_BookingForm'>FORMULAIRE RESA</a>
-        <form action='$deconnexion'>
-        <input id='deco_bouton' type='submit' value='Deconnexion'>
-        </form>";
-    }
-        
-    
-    // Le chemin de ces variables est à définir sur chaques pages
-    else {
-        echo"       
-        <a href='$path_index'>INDEX</a>
         <a href='$path_inscription'>INSCRIPTION</a>
         <a href='$path_connexion'>CONNEXION</a>
-        <a href='$path_planning'>PLANNING</a>";
+        ";
+    } ?> 
+
+
+    <?php if (isset($_SESSION['id'])) 
+    {echo
+        "
+        <a class='headerlink' href='$path_profil'>PROFIL</a>
+        <a class='headerlink' href='$path_booking'>RESERVATION</a>
+        <a class='headerlink' href='$path_BookingForm'>FORMULAIRE RESA</a>
+        <form action='header.php' method='POST'>
+        <input id='logout' type='submit' value='Deconnexion' name='logout'>
+        </form>
+        ";
     }
     ?>
+
+    </ul>
     </nav>
     </header>
+    <?php
+        if (isset($_POST['logout'])) {
+            session_destroy();     
+            header('connexion.php');
+            }
+    ?>
+
+

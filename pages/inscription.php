@@ -7,8 +7,8 @@ $user = new User();
 if (isset($_POST["register"])) {
     $login=$_POST["login"];
     $password=$_POST["password"];
-    // var_dump($password);
-    // var_dump($login);
+    var_dump($password);
+    var_dump($login);
 
     $user->register($login,$password);
 }

@@ -15,13 +15,13 @@ class User{
     
   
 //inscrition
-// public function __construct()
+// // public function __construct()
 // {
 //     $pdo = new PDO('mysql:host=localhost;dbname=reservationsalles','root',''); 
      
 // }
 public function register($login,$password){
-    secure($login);
+    // secure($login);
     if($_POST["password"]==$_POST['confirmPW']){
         echo"coucou";
 
@@ -73,5 +73,7 @@ public function register($login,$password){
 //}
 //}
 }
+}
+
 ?>
 
