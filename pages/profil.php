@@ -11,8 +11,10 @@ include '../config/functionT.php';
     catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
+    
+     $login = isset($_SESSION['utilisateur']);
+     var_dump($_SESSION);
 
-     $login = $_SESSION['utilisateur'];
      if(isset($_POST['submit']) AND $_POST['newpassword'] != $_POST['confpassword']){
          $error = 'Mot de passe et confirmation mot de passe différents';echo 'coucou4';
      }

@@ -72,7 +72,7 @@ public function register($login,$password){
    // }
 //}
 //}
-}
+//}
 }
 
 ?>

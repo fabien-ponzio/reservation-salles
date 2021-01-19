@@ -1,4 +1,5 @@
 <?php
+session_start();
 // HEADER FOOTER
 $path_header="pages/header.php";
 $path_footer="pages/footer.php";
@@ -11,6 +12,7 @@ $path_planning="pages/planning.php";
 $path_booking="pages/reservation.php";
 $path_BookingForm="pages/reservation-form.php";
 require_once('pages/header.php');
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
