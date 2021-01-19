@@ -1,0 +1,14 @@
+#form_register{
+    text-align: center;
+    align-items: center;
+    /* width: 30%; */
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 15%;
+    padding-bottom: 5px;
+}
+
+body{
+    background-image: url=('../images/kisspng-shield-gold-computer-icons-clip-art-black-shield-5ac334ee2e71c2.1159410915227425101902.png');
+}

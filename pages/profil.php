@@ -1,11 +1,15 @@
 <?php
+
 session_start();
-var_dump($_SESSION);
-include '../config/functionT.php';
+require_once('../config/bdd.php');
+
+var_dump($_SESSION['utilisateur']);
+
+//include '../config/functionT.php';
 //$user = new User($id,$login);
 //var_dump($user);
 
-    try{
+    /*try{
         $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); echo 'coucou1';
     }
     catch (Exception $e){
@@ -39,7 +43,9 @@ include '../config/functionT.php';
    
      if (isset($ok)) {
          echo $ok;
-     }
+     }*/
+
+    
     
 ?>
 

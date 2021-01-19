@@ -28,7 +28,7 @@
     <a class='headerlink' href='$path_planning'>PLANNING</a>
 
 
-    <?php if (!isset($_SESSION['id'])) {
+    <?php if (empty($_SESSION['utilisateur'])) {
         echo"
         <a href='$path_inscription'>INSCRIPTION</a>
         <a href='$path_connexion'>CONNEXION</a>
@@ -36,13 +36,13 @@
     } ?> 
 
 
-    <?php if (isset($_SESSION['id'])) 
+    <?php if (isset($_SESSION['utilisateur'])) 
     {echo
         "
         <a class='headerlink' href='$path_profil'>PROFIL</a>
         <a class='headerlink' href='$path_booking'>RESERVATION</a>
         <a class='headerlink' href='$path_BookingForm'>FORMULAIRE RESA</a>
-        <form action='header.php' method='POST'>
+        <form action='' method='POST'>
         <input id='logout' type='submit' value='Deconnexion' name='logout'>
         </form>
         ";
@@ -54,9 +54,10 @@
     </header>
     <?php
         if (isset($_POST['logout'])) {
+            session_unset();
             session_destroy();     
-            header('connexion.php');
-            }
+            header('location:index.php');
+            };
     ?>
 
 
