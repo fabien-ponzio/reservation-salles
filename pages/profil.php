@@ -1,16 +1,16 @@
 <?php
 
 session_start();
-require_once('../config/bdd.php');
+//require_once('../config/bdd.php');
 
 var_dump($_SESSION['utilisateur']);
 
-//include '../config/functionT.php';
+include '../config/functionT.php';
 //$user = new User($id,$login);
 //var_dump($user);
 
-    /*try{
-        $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); echo 'coucou1';
+    try{
+        $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
     }
     catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
@@ -33,7 +33,6 @@ var_dump($_SESSION['utilisateur']);
                 'newpassword' => $password,
                 'login' => $login,
              ));
-             var_dump($update);
              $ok = 'Profil modifié';
              $_SESSION['utilisateur'] =$newlogin;
              $login = $newlogin;
@@ -43,7 +42,8 @@ var_dump($_SESSION['utilisateur']);
    
      if (isset($ok)) {
          echo $ok;
-     }*/
+         var_dump($_SESSION);
+     }
 
     
     
