@@ -1,5 +1,5 @@
 <?php
-class Db
+class Bdd
 {
     private $host;
     private $username;
