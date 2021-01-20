@@ -14,5 +14,41 @@ class Creneaux {
         $results = $stmt->fetchAll();
         return $results;
     }
+
+    public function getEventsBetweenByDay(DateTime $start, DateTime $end): array {
+        $events = $this->getEventsBetween($start, $end);
+        foreach ($events as $event) {
+            $date = explode(' ', $event['debut'])[0];
+            if (!isset($days[$date])) {
+                $days[$date] = [$event];
+            }
+            else{
+                $days[$date][] = [$event];
+            }
+        }
+        return $days;
+    }
+
+    public function getEventsBetweenByDayTime(DateTime $start, DateTime $end): array{
+        $events = $this->getEventsBetween($start, $end);
+        $days = [];
+        foreach ($events as $event){
+            $day[$events['debut']] = $event;
+            
+            $diff = new Events;
+            $length = $diff->timeLength($event['debut'], $event['fin']);
+
+            $day[$event['debut']]['length'] = $length;
+            $dateStart = new DateTime($event['debut']);
+            $dateDay = $dateStart->format('N');
+            $timeHour = $dateStart->format('G');
+            $case = ($timeHour - 7) . '-' . $dateDay;
+            $day[$event['debut']]['case'] = $case;
+            $lengthEvents[$case] = $length;
+
+        }
+        return $days;
+    }
+    
 }
 ?>
