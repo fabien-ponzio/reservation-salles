@@ -3,9 +3,8 @@ footer{
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    border: solid black 0.5px;
     padding-top: 1.5% ;
-    padding-bottom: 1.5% ;
+    background-color: black;
 }
 #logobb{
     width: 15vw;
@@ -20,7 +19,22 @@ footer{
     justify-content: space-evenly;
 }
 #social a{
-    font-size: 50px;
+    font-size: 30px;
     justify-content: space-between;
     text-align:center;
+    color: #ffcc29;
+}
+
+#social a:hover{
+    transform : scale(1.5);
+    transition : 1s; 
+}
+
+#logotomate{
+    width:10vw;
+}
+
+body{
+    margin: 0;
+    padding: 0;
 }

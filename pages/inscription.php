@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/functionT.php';
+require '../config/fonctions.php';
 //CHEMINS//
 $path_index="../index.php";
 $path_inscription="";
@@ -45,8 +45,8 @@ if (isset($_POST["register"])) {
 </html>
 
 <?php 
-$path_img_footer1 = '../images/logobb.png';
-$path_img_footer2 ='';
+$path_img_footer1 = '../images/logobbYellow.png.';
+$path_img_footer2 ='../images/logotomate.png';
 $path_footer='../CSS/footer.css';
 require_once('footer.php')
 ?>

@@ -39,10 +39,7 @@ $path_BookingForm="pages/reservation-form.php";
 <main>
     <section>
         <article id="titreindex">
-            <!-- TITRE 1 -->
-            <h1 id="titre1"> Réservation de salles </h1>
-            <!-- TITRE 2 -->
-            <h1 id="titre2"> SHIELD</h1>
+        <!-- TITREEEEEEEEEEE -->
         </article>
     </section>
     <article class="box-slide">
@@ -52,13 +49,16 @@ $path_BookingForm="pages/reservation-form.php";
                  <a href="#" class="a-slide"> <img src="images/bouclierhyrule.png" class="img-slide" alt="logo"> </a>
                  <a href="#" class="a-slide"> <img src="images/bouclier_fantaisie.png" class="img-slide" alt="logo"> </a>
                  <a href="#" class="a-slide"> <img src="images/bouclier_viking.png" class="img-slide" alt="logo"> </a>
-                 <a href="#" class="a-slide"> <img src="images/bouclier_antique.png.png" class="img-slide" alt="logo"> </a>
+                 <a href="#" class="a-slide"> <img src="images/bouclier_antique.png" class="img-slide" alt="logo"> </a>
                  <a href="#" class="a-slide"> <img src="images/bouclier_america.png" class="img-slide" alt="logo"> </a>
+                 <a href="#" class="a-slide"> <img src="images/Furyshield-removebg-preview.png" class="img-slide" alt="logo"> </a>
+                 <a href="#" class="a-slide"> <img src="images/Ebonyshield.png" class="img-slide" alt="logo"> </a>
+
                 </section>
 </main>
 <?php
-$path_img_footer1 = 'images/logobb.png';
-$path_img_footer2 ='';
+$path_img_footer1 = 'images/logobbYellow.png';
+$path_img_footer2 ='images/logotomate.png';
 $path_footer='CSS/footer.css';
 require_once('pages/footer.php');
 ?>
