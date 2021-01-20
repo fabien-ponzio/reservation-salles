@@ -2,12 +2,13 @@
 
 <?php 
 session_start();
-//require_once('../config/Db.php');
+require_once('../config/Db.php');
 //require_once('../config/User.php');
 //require_once('../config/bdd.php');
 // REQUIRE 
 require_once('../config/fonctions.php');
-connect();
+$_SESSION['User']=new User();
+$_SESSION['User']->connect();
 // CHEMINS
 $path_index="../index.php";
 $path_inscription="inscription.php";
@@ -58,7 +59,7 @@ require_once('header.php');
 </body>
 </html>
 <?php
-$path_img_footer1 = '../images/logobb.png';
-$path_img_footer2 ='';
+$path_img_footer1 = '../images/logobbYellow.png';
+$path_img_footer2 ='../images/logotomate.PNG';
 $path_footer='../CSS/footer.css';
  require_once('footer.php'); ?>

@@ -4,22 +4,13 @@ class User_connect
     private $id;
     public $login;
     public $password;
-    //public $db;
-    /**
-     * 
-     */
-    /*public function __construct($db)
-    {   
 
-    $this->db = $db;
-    
-    }*/
 
 
     public function connectUser($login, $password)
     { 
         $bdd = new Bdd(); 
-        $pdo = $bdd->getbdd(); 
+        $pdo = $bdd->connectDb(); 
         //$connexion = $this->db->connectDb();
         $q = $pdo->prepare("SELECT * FROM utilisateurs WHERE login = :login");
         $q->bindparam(':login', $login, PDO::PARAM_STR);

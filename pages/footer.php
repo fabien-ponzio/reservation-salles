@@ -11,7 +11,7 @@
            <a href=""><i class="fab fa-facebook-f"></i></a> 
         </div>
 
-        <img src= <?= $path_img_footer2; ?> alt="logotomate">
+        <img id="logotomate" src= <?= $path_img_footer2; ?> alt="logotomate">
 </footer>
 </body>
 </html>
