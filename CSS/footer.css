@@ -1,0 +1,26 @@
+footer{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    border: solid black 0.5px;
+    padding-top: 1.5% ;
+    padding-bottom: 1.5% ;
+}
+#logobb{
+    width: 15vw;
+}
+#logo{
+    display: flex;
+    justify-content: space-around;
+}
+#social{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#social a{
+    font-size: 50px;
+    justify-content: space-between;
+    text-align:center;
+}

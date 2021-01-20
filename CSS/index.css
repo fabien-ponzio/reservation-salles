@@ -1,3 +1,24 @@
+#titreindex{
+display: flex;
+background-color: red;
+flex-direction: column;
+height: 75px;
+}
+
+#titre1{
+  font-family: 'Satisfy', cursive;
+  font-size: xx-large;
+}
+#titre2{
+  font-family: 'Abril Fatface', cursive;
+  font-size: xx-large;
+}
+
+body{
+  background-color: #ffcc29;
+}
+
+
 .img-slide {
     max-width: 120%;
     width: 450px;

@@ -1,8 +1,8 @@
 <?php
 session_start();
 // HEADER FOOTER
-$path_header="pages/header.php";
-$path_footer="pages/footer.php";
+// $path_header="pages/header.php";
+// $path_footer="pages/footer.php";
 //PAGES
 $path_index="";
 $path_inscription="pages/inscription.php";
@@ -11,7 +11,6 @@ $path_profil="pages/profil.php";
 $path_planning="pages/planning.php";
 $path_booking="pages/reservation.php";
 $path_BookingForm="pages/reservation-form.php";
-require_once('pages/header.php');
 
 //var_dump($_SESSION['utilisateur']['id'])
 ?>
@@ -27,11 +26,25 @@ require_once('pages/header.php');
     <!-- FONT TEXTE -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap" rel="stylesheet">
+<!-- FONT TITRE 1  -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+<!-- FONT TITRE 2  -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
+<?php require_once('pages/header.php');?>
 <main>
-    <h1> TITREEEEEEEEE </h1>
+    <section>
+        <article id="titreindex">
+            <!-- TITRE 1 -->
+            <h1 id="titre1"> Réservation de salles </h1>
+            <!-- TITRE 2 -->
+            <h1 id="titre2"> SHIELD</h1>
+        </article>
+    </section>
     <article class="box-slide">
                 <section class="slide-show">
                  <a href="#" class="a-slide"> <img src="images/Bouclier-rond.png" class="img-slide" alt="logo"> </a>
@@ -44,6 +57,9 @@ require_once('pages/header.php');
                 </section>
 </main>
 <?php
+$path_img_footer1 = 'images/logobb.png';
+$path_img_footer2 ='';
+$path_footer='CSS/footer.css';
 require_once('pages/footer.php');
 ?>
 

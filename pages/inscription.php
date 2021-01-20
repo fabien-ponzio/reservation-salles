@@ -1,6 +1,16 @@
 <?php
 session_start();
 require '../config/functionT.php';
+//CHEMINS//
+$path_index="../index.php";
+$path_inscription="";
+$path_connexion="connexion.php";
+$path_profil="profil.php";
+$path_planning="planning.php";
+$path_booking="reservation.php";
+$path_BookingForm="reservation-form.php";
+require '../pages/header.php';
+
 
 $user = new User();
 // var_dump($newuser);
@@ -14,24 +24,29 @@ if (isset($_POST["register"])) {
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/inscription.css">
-    <title>Document</title>
-</head>
-<body>
-    <form id="form_register" action="" method="POST">
-    <label for="login">Id</label>
-    <input type="text" name="login">
-    <label for="password">Mdp</label>
-    <input type="password" name="password">
-    <label for="confirmPW">Confirmez votre mdp</label>
-    <input type="password" name="confirmPW">
-    <input type="submit" name="register">
-    </form>
+<!-- LIEN STYLESHEET -->
+<link rel="stylesheet" href="../CSS/inscription.css">
+<main id="main_register">
+    <div id ="shield_title">
+    <h1>Inscrivez-vous!</h1>
+    </div>
 
+    <form id="form_register" action="" method="POST">
+    <label for="login">Votre identifiant:</label>
+    <input class="form_input" type="text" name="login" placeholder="">
+    <label for="password">Votre mot de passe:</label>
+    <input class="form_input" type="password" name="password" placeholder="">
+    <label for="confirmPW">Confirmez votre mot de passe:</label>
+    <input class="form_input" type="password" name="confirmPW"placeholder="">
+    <input class="register_input" id=register type="submit" name="register">
+    </form>
+</main>
 </body>
 </html>
+
+<?php 
+$path_img_footer1 = '../images/logobb.png';
+$path_img_footer2 ='';
+$path_footer='../CSS/footer.css';
+require_once('footer.php')
+?>

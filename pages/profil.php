@@ -4,6 +4,14 @@ session_start();
 require_once('../config/bdd.php');
 
 var_dump($_SESSION['utilisateur']);
+$path_index="../index.php";
+$path_inscription="inscription.php";
+$path_connexion="";
+$path_profil="profil.php";
+$path_planning="planning.php";
+$path_booking="reservation.php";
+$path_BookingForm="reservation-form.php";
+require_once('header.php');
 
 //include '../config/functionT.php';
 //$user = new User($id,$login);
@@ -47,7 +55,7 @@ var_dump($_SESSION['utilisateur']);
     
 ?>
 
-
+<link rel="stylesheet" href="../CSS/profil.css">
 <form action="profil.php" method="POST" id="form-pro">
                             <label for="newlogin"></label>
                             <input type="text"  name="newlogin" placeholder="Login"> <br>
@@ -59,3 +67,9 @@ var_dump($_SESSION['utilisateur']);
 
                             
 </form>
+<?php
+$path_img_footer1 = '../images/logobb.png';
+$path_img_footer2 ='';
+$path_footer='../CSS/footer.css';
+require_once('footer.php');
+?>

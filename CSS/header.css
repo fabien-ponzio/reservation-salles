@@ -1,21 +1,27 @@
 #headernav{
+    display: flex;
+    justify-content: center;
+}
+#headernav ul{
 display: flex;
-border: solid;
-padding: 25px;
+/* padding: 25px; */
 justify-content: space-around;
-background-color: #14274e;
-border-color: #9ba4b4;
-font-family: 'Arimo', sans-serif;
+background-color:#ffcc29;
+width: 80%;
+font-family: 'Alfa Slab One', cursive;
 }
 
 a{
-font-size: small;
 text-decoration: none;
-color: #f1f6f9;
+color: black;
+font-size: x-large;
 }
 
-a:hover{
-font-size: x-large;
-font-family: 'Calistoga', cursive;
-transition: 1s;
+#headernav a:hover{
+    text-decoration: underline;
+    transition: 1.5s;
+}
+#headerspacing{
+    display: flex;
+    justify-content: space-around;
 }

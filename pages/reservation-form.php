@@ -1,5 +1,16 @@
 <?php
 session_start();
+// CHEMINS
+$path_index="../index.php";
+$path_inscription="inscription.php";
+$path_connexion="";
+$path_profil="profil.php";
+$path_planning="planning.php";
+$path_booking="reservation.php";
+$path_BookingForm="reservation-form.php";
+// HEADER
+
+require_once('header.php');
 var_dump($_SESSION);
 require '../config/functionT.php'; 
 $user = new User;
@@ -49,7 +60,7 @@ $user = new User;
     }
 ?>
 
-
+<link rel="stylesheet" href="../CSS/reservation-form.css">
 <form action="reservation-form.php" method="POST" id="form-resa">
                             <label for="titre"></label>
                             <input type="text"  name="titre" placeholder="Titre"> <br>
@@ -61,3 +72,10 @@ $user = new User;
                             <input type="datetime-local" name="fin" placeholder="fin"><br>
                             <input type="submit" name="submit" value="submit" class='boutton'><br>
 </form>
+
+<?php
+$path_img_footer1 = '../images/logobb.png';
+$path_img_footer2 ='';
+$path_footer='../CSS/footer.css';
+ require_once('footer.php');
+ ?>
