@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once('../config/bdd.php');
+//require_once('../config/bdd.php');
 
 var_dump($_SESSION['utilisateur']);
 $path_index="../index.php";
@@ -13,18 +13,20 @@ $path_booking="reservation.php";
 $path_BookingForm="reservation-form.php";
 require_once('header.php');
 
-//include '../config/functionT.php';
+include '../config/functionT.php';
 //$user = new User($id,$login);
 //var_dump($user);
 
-    /*try{
-        $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); echo 'coucou1';
+    try{
+        $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
     }
     catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
+    
+     $login = isset($_SESSION['utilisateur']);
+     var_dump($_SESSION);
 
-     $login = $_SESSION['utilisateur'];
      if(isset($_POST['submit']) AND $_POST['newpassword'] != $_POST['confpassword']){
          $error = 'Mot de passe et confirmation mot de passe différents';echo 'coucou4';
      }
@@ -39,7 +41,6 @@ require_once('header.php');
                 'newpassword' => $password,
                 'login' => $login,
              ));
-             var_dump($update);
              $ok = 'Profil modifié';
              $_SESSION['utilisateur'] =$newlogin;
              $login = $newlogin;
@@ -49,7 +50,8 @@ require_once('header.php');
    
      if (isset($ok)) {
          echo $ok;
-     }*/
+         var_dump($_SESSION);
+     }
 
     
     
