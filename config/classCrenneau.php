@@ -55,7 +55,7 @@ class Creneaux {
     public function timeLength(string $start, string $end): int {
         $tempOne = new DateTime($start);
         $tempTwo = new DateTime($end);
-        $length date_diff($tempOne, $tempTwo);
+        $length = date_diff($tempOne, $tempTwo);
         return $length->h;
     }
     public function getEvent(int $id): array {
