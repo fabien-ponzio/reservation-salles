@@ -50,29 +50,17 @@ public function __construct(?int $day = null, ?int $month = null, ?int $year = n
 
 }
 
-    /**
-     * retourne le mois  en toutes lettres et l'année (ex: Mars 2018)
-     * @return string
-     */
-
     public function ToString(): string {
         return $this->month[$this->month - 1] . ' ' . $this->year;
 
     }
-        /**
-     * Retourne le nom du jour en toutes lettres
-     * @param int $index
-     * @return string
-     */
+
 
      public function getDays(int $index): string{
          return $this->days[$index];
      }
 
-            /**
-     * renvoie la semaine suivante
-     * @return Week
-     */
+ 
 
      public function nextWeek(): Week {
          $tempDate = new DateTimeImmutable($this->currentDate);
@@ -86,10 +74,17 @@ public function __construct(?int $day = null, ?int $month = null, ?int $year = n
         return new Week($day, $month, $year);
      }
 
-     /**
-         * retourne un objet DateTime pour faire la recherche d'événements
-         * @return DateTime
-         */
+    public function previousWeek(): Week{
+        $tempDate = new DateTimeImmutable($this->currentDate);
+        $dayName = $tempDate->format('1');
+        $tempDate2 = $tempDate->modify('prvious' . $dayName);
+        $day = $tempDate2->format('j');
+        $month = $tempDate2->format('n');
+        $year = $tempDate2->format('Y');
+
+        return new Week($day, $month, $year);
+    }
+
         public function getFirstDay(): DateTime {
             return new DateTime("{$this->year}-{$this->month}-{$this->mondayDate}");
         }
