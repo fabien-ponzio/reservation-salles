@@ -9,7 +9,10 @@ class Creneaux {
 
     }
     public function getEventsBetween(DateTime $start, DateTime $end): array {
-        $sql = "SELECT reservation.id, reservations.titre, reservation.debut, reservation.fin, utilisateurs FROM reservation JOIN utlilisateurs WHERE debut BETWEEN '{$start->format('Y-m-d 08:00:00')}' AND '{$end->format('Y-m-d 19:00:00')}' AND utilisateurs.id = reservation.id_utilisateur";
+        $sql = "SELECT reservation.id, reservations.titre, reservation.debut, reservation.fin, utilisateurs 
+        FROM reservation JOIN utlilisateurs 
+        WHERE debut 
+        BETWEEN '{$start->format('Y-m-d 08:00:00')}' AND '{$end->format('Y-m-d 19:00:00')}' AND utilisateurs.id = reservation.id_utilisateur";
         $stmt = $this->pdo->query($sql);
         $results = $stmt->fetchAll();
         return $results;
@@ -49,6 +52,24 @@ class Creneaux {
         }
         return $days;
     }
+    public function timeLength(string $start, string $end): int {
+        $tempOne = new DateTime($start);
+        $tempTwo = new DateTime($end);
+        $length date_diff($tempOne, $tempTwo);
+        return $length->h;
+    }
+    public function getEvent(int $id): array {
+        $sql = "SELECT reservations.id, reservations.titre, reservations.description, reservationdebut, reservation.fin, utilisateurs.login
+            FROM reservations JOIN utilisateurs
+            WHERE reservation.id = :id*
+            AND utilisateur.id = reservation.id_utilisateur";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id'=>$id]);
+        $results = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $results;
     
+    }
+    public function Validateform($title, $date, $start, $end, $text){}
 }
 ?>
