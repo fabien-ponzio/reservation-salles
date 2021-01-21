@@ -38,7 +38,7 @@ class Creneaux {
         foreach ($events as $event){
             $day[$events['debut']] = $event;
             
-            $diff = new Events;
+            $diff = new Creneaux;
             $length = $diff->timeLength($event['debut'], $event['fin']);
 
             $day[$event['debut']]['length'] = $length;
