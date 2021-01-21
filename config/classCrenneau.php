@@ -9,10 +9,10 @@ class Creneaux {
 
     }
     public function getEventsBetween(DateTime $start, DateTime $end): array {
-        $sql = "SELECT reservation.id, reservations.titre, reservation.debut, reservation.fin, utilisateurs 
-        FROM reservation JOIN utlilisateurs 
-        WHERE debut 
-        BETWEEN '{$start->format('Y-m-d 08:00:00')}' AND '{$end->format('Y-m-d 19:00:00')}' AND utilisateurs.id = reservation.id_utilisateur";
+        $sql = "SELECT reservations.id, reservations.titre, reservations.debut, reservations.fin, utilisateurs.login 
+        FROM reservations JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur 
+        WHERE reservations.debut 
+        BETWEEN '{$start->format('Y-m-d 08:00:00')}' AND '{$end->format('Y-m-d 19:00:00')}'";
         $stmt = $this->pdo->query($sql);
         $results = $stmt->fetchAll();
         return $results;

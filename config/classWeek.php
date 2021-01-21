@@ -21,7 +21,7 @@ public function __construct(?int $day = null, ?int $month = null, ?int $year = n
         $day = intval(date('j'));
     }
     if($month === null || $month < 1 || $month > 12){
-        $month = intval(date('Y'));
+        $month = intval(date('m'));
     }
     if($year === null){
         $year = intval(date('Y'));
@@ -37,7 +37,7 @@ public function __construct(?int $day = null, ?int $month = null, ?int $year = n
     }
     else {
         $getMondayDate = $makeDate->modify('last monday');
-        $this->mondaysDate = intval($getMondayDate->format('j'));
+        $this->mondayDate = intval($getMondayDate->format('j'));
         $this->currentIsMonday = FALSE;
     }
 // Set attribute
@@ -65,7 +65,7 @@ public function __construct(?int $day = null, ?int $month = null, ?int $year = n
      public function nextWeek(): Week {
          $tempDate = new DateTimeImmutable($this->currentDate);
          $dayName = $tempDate->Format('l');
-         $tempDate2 = $tempDate->modify('next' . $dayName);
+         $tempDate2 = $tempDate->modify('next ' . $dayName);
 
          $day = $tempDate2->format('j');
          $month = $tempDate2->format('n');
@@ -76,8 +76,9 @@ public function __construct(?int $day = null, ?int $month = null, ?int $year = n
 
     public function previousWeek(): Week{
         $tempDate = new DateTimeImmutable($this->currentDate);
-        $dayName = $tempDate->format('1');
-        $tempDate2 = $tempDate->modify('prvious' . $dayName);
+        $dayName = $tempDate->format('l');
+        var_dump($dayName);
+        $tempDate2 = $tempDate->modify('previous ' . $dayName);
         $day = $tempDate2->format('j');
         $month = $tempDate2->format('n');
         $year = $tempDate2->format('Y');
@@ -87,6 +88,7 @@ public function __construct(?int $day = null, ?int $month = null, ?int $year = n
 
         public function getFirstDay(): DateTime {
             return new DateTime("{$this->year}-{$this->month}-{$this->mondayDate}");
+            var_dump(new DateTime);
         }
 }
 
