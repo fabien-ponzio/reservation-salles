@@ -10,6 +10,7 @@ class Creneaux {
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
 
     }
+    
     public function getEventsBetween(DateTime $start, DateTime $end): array {
         $sql = "SELECT reservations.id, reservations.titre, reservations.debut, reservations.fin, utilisateurs.login 
         FROM reservations JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur 
