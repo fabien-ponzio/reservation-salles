@@ -25,3 +25,12 @@ font-size: x-large;
     display: flex;
     justify-content: space-around;
 }
+
+#logout input{
+    border-top-left-radius: 2em 0.5em;
+    border-top-right-radius: 1em 3em; 
+    border-bottom-right-radius: 4em 0.5em; 
+    border-bottom-left-radius: 1em 3em;
+    background-color: white;    
+    font-family: 'Arimo', sans-serif;
+}

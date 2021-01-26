@@ -13,7 +13,7 @@ $path_booking="reservation.php";
 $path_BookingForm="reservation-form.php";
 require_once('header.php');
 
-include '../config/functionT.php';
+include '../config/fonctions.php';
 //$user = new User($id,$login);
 //var_dump($user);
 
@@ -56,22 +56,26 @@ include '../config/functionT.php';
     
     
 ?>
-
+<!-- STYLESHEET -->
 <link rel="stylesheet" href="../CSS/profil.css">
-<form action="profil.php" method="POST" id="form-pro">
-                            <label for="newlogin"></label>
-                            <input type="text"  name="newlogin" placeholder="Login"> <br>
-                            <label for="oldpassword"></label>
-                            <input type="password" name="newpassword" placeholder="New password"><br>
-                            <label for="newpassword"></label>
-                            <input type="password" name="confpassword" placeholder="Confirm Password"><br>
-                            <input type="submit" name="submit" value="submit" class='boutton'><br>
+<main id="main_profile">
+    <h1>Mettez à jour vos identifiants !</h1>
+<form id="form_profile" action="profil.php" method="POST" id="form-pro">
 
-                            
+    <label for="newlogin"></label>
+    <input class="form_input" type="text"  name="newlogin" placeholder="Login"> <br>
+    <label for="oldpassword"></label>
+    <input class="form_input" type="password" name="newpassword" placeholder="New password"><br>
+    <label for="newpassword"></label>
+    <input class="form_input" type="password" name="confpassword" placeholder="Confirm Password"><br>
+    <input id="profile_input" type="submit" name="submit" value="Envoyer" class='boutton'><br>
+
 </form>
+</main>
+                            
 <?php
-$path_img_footer1 = '../images/logobb.png';
-$path_img_footer2 ='';
+$path_img_footer1 = '../images/logobbYellow.png';
+$path_img_footer2 ='../images/logotomate.PNG';
 $path_footer='../CSS/footer.css';
 require_once('footer.php');
 ?>

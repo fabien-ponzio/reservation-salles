@@ -1,6 +1,5 @@
 #titreindex {
   display: flex;
-  background-color: red;
   flex-direction: column;
   height: 75px;
 }
