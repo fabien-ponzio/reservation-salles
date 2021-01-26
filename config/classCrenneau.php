@@ -61,7 +61,7 @@ class Creneaux {
     public function getEvent(int $id): array {
         $sql = "SELECT reservations.id, reservations.titre, reservations.description, reservationdebut, reservation.fin, utilisateurs.login
             FROM reservations JOIN utilisateurs
-            WHERE reservation.id = :id*
+            WHERE reservation.id = :id
             AND utilisateur.id = reservation.id_utilisateur";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id'=>$id]);

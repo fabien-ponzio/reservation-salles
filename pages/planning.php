@@ -29,6 +29,7 @@ $actWeek = new Week($_GET['day'] ?? null, $_GET['month'] ?? null, $_GET['year'] 
 $startingDayWeek = $actWeek->getFirstday();
 //modify permet de modifier l'objet "+5days -1 second"
 $end =(clone $startingDayWeek)->modify('+ 5 days - 1 second'); 
+var_dump($startingDayWeek);
 // valeur de retour en faisant un var dump
 // qui permet d'envoyer des conditions à partir de là 
 // $eventsFromDB est un nouvel objet de la class creneau
