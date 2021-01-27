@@ -41,12 +41,26 @@ include '../config/fonctions.php';
     if(isset($_POST['submit'])){
         echo 'coucou3';
         if ($_POST['newpassword'] != $_POST['confpassword']){
-            $error = 'Mot de passe et confirmation mot de passe différents';echo 'coucou4';
+            $error = 'Mot de passe et confirmation mot de passe différents';
         }
-        if()
-
+        elseif (empty($_POST['newpassword'])){
+            $_SESSION['error'] = 'Vous ne pouvez pas utiliser un mot de passe vide.';
+            header("Location: profil.php");
+            return;
+        }
+        elseif (strlen(($_POST['newlogin'])) > 255) {
+            $_SESSION['error'] = 'Votre nouveau login est trop long. Veuillez en choisir un plus court';
+			header("Location: profil.php");
+            return;
+        }
+        elseif (strlen(($_POST['password'])) > 255) {
+            $_SESSION['error'] = 'Votre nouveau mot de passe est trop long. Veuillez en choisir un plus court';
+			header("Location: profil.php");
+            return;
+        }
+        
      else{
-         //if(isset($_POST['submit'])){ echo 'coucou5';
+
              $newlogin=htmlspecialchars($_POST['newlogin']);
              $password = password_hash($_POST['newpassword'], PASSWORD_DEFAULT);
              $update= $db ->prepare("UPDATE utilisateurs SET login = :newlogin, password = :newpassword, id = :id WHERE id = :id");
@@ -61,7 +75,7 @@ include '../config/fonctions.php';
              $_SESSION['utilisateur'] =$newlogin;
              $login = $newlogin;
             } 
-        // }
+
       
     }
      if (isset($ok)) {
