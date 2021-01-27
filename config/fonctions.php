@@ -1,6 +1,6 @@
 <?php
 //session_start();
-//require('bdd.php');
+require('DB.php');
 
 
 class User{
@@ -66,9 +66,6 @@ class User{
 
     public function register($login,$password){
         // secure($login);
-        if($_POST["password"]==$_POST['confirmPW']){
-            echo"coucou";
-        }
     
         if($_POST["password"]==$_POST['confirmPW']){
             echo"coucou4"; // else "Les mots de passe ne correspondent pas"
