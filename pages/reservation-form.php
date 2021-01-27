@@ -106,7 +106,13 @@ session_start();
                 header('Location: reservation-form.php');
                 return;
             }
-
+            else{
+                $dateStart = $_POST['date'] . ' ' . $_POST['startTime'] . ':00';
+                $dateEnd = $_POST['date'] . ' ' . $_POST['endtime'] . ':00';
+                    //LA
+                $start = new DateTime($_POST['date'], new DateTimeZone('Europe/Paris'));
+                $end = (clone $start)->modify('+1 day - 1 second');
+            }
 
         }
        
