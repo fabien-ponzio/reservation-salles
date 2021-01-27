@@ -64,36 +64,60 @@ class User{
     }
         
 
-    public function register($login,$password){
-        // secure($login);
-    
-        if($_POST["password"]==$_POST['confirmPW']){
-            echo"coucou4"; // else "Les mots de passe ne correspondent pas"
-            $bdd = new Bdd(); 
-            $pdo = $bdd->connectDb();
-            $checklogin = $pdo->prepare("SELECT login FROM utilisateurs WHERE login = :login");
-            $checklogin->bindValue(':login', $login);
-            $checklogin->execute(); 
-            $count= $checklogin->fetch();
-            $password = password_hash($password, PASSWORD_DEFAULT);
+public function register($login,$password,$confirmPW){
+    // secure($login);
 
-            if (!$count) { 
-                echo"coucou5";
-                $stmt = $pdo->prepare("INSERT INTO utilisateurs (login,password) VALUE (?,?)");
-                $stmt->bindValue(1,$login);
-                $stmt->bindValue(2,$password);
-                $stmt->execute();
-                $id = $pdo->lastInsertId();
-                $this->id = $id;
-                $this->login = $login;
-                $this->password = $password;
-                header('Location:connexion.php');
-                return array($login,$password);
-            }
-                
+    if (isset($_POST["register"])){   
+
+        if (strlen($login) <=5){  
+        $_SESSION['error']="Veuillez insérer un minimum de 5 caractères dans chaque champ";
+        return $_SESSION['error']; 
         }
-            
+
+        elseif (strlen($password) <=5) {
+        $_SESSION['error']="Veuillez insérer un minimum de 5 caractères dans chaque champ"; 
+        return $_SESSION['error'];   
+        }
+
+        elseif (strlen($confirmPW) <=5) {
+        $_SESSION['error']="Veuillez insérer un minimum de 5 caractères dans chaque champ"; 
+        return $_SESSION['error'];        
+        }
+
+        else{
+
+            if($password == $confirmPW){
+
+                echo"coucou4"; // else "Les mots de passe ne correspondent pas"
+                $bdd = new Bdd(); 
+                $pdo = $bdd->connectDb();
+                $checklogin = $pdo->prepare("SELECT login FROM utilisateurs WHERE login = :login");
+                $checklogin->bindValue(':login', $login);
+                $checklogin->execute(); 
+                $count= $checklogin->fetch();
+                $password = password_hash($password, PASSWORD_DEFAULT);
+    
+                if (!$count) { 
+                    echo"coucou5";
+                    $stmt = $pdo->prepare("INSERT INTO utilisateurs (login,password) VALUE (?,?)");
+                    $stmt->bindValue(1,$login);
+                    $stmt->bindValue(2,$password);
+                    $stmt->execute();
+                    $id = $pdo->lastInsertId();
+                    $this->id = $id;
+                    $this->login = $login;
+                    $this->password = $password;
+                    header('Location:connexion.php');
+                    return array($login,$password);
+                }           
+        }
+
+        }
+
+        
+
     }
+}
 
                 /*try{
                     $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
@@ -130,12 +154,8 @@ class User{
                 if (isset($ok)) {
                     echo $ok;
                     var_dump($_SESSION);
-                }*/
-
-                    
-                    
-}
-
+                }*/        
+    }   
 ?>
 
 

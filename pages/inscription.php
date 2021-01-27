@@ -17,10 +17,17 @@ $user = new User();
 if (isset($_POST["register"])) {
     $login=$_POST["login"];
     $password=$_POST["password"];
+    $confirmPW=$_POST["confirmPW"];
     var_dump($password);
     var_dump($login);
 
-    $user->register($login,$password);
+    $user->register($login,$password,$confirmPW);
+    var_dump($_SESSION["error"]);
+
+    if (!empty($_SESSION['error'])){
+        echo $_SESSION['error'];
+    }
+
 }
 
 ?>
@@ -40,6 +47,7 @@ if (isset($_POST["register"])) {
     <input class="form_input" type="password" name="confirmPW"placeholder="">
     <input class="register_input" id=register type="submit" name="register">
     </form>
+    <p></p>
 </main>
 </body>
 </html>
