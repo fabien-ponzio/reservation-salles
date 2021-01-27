@@ -1,6 +1,6 @@
 <?php
-// session_start();
-require('Db.php');
+//session_start();
+require('DB.php');
 
 
 class User{
