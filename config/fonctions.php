@@ -25,9 +25,7 @@ class User{
 //--------------------------------------- CONNEXION -------------------------------------------------------//
 
     public function connect(){
-        // $db  = BDD();
-        //$objet = new Bdd(); // A RETRAVAILLER
-        //$db = $objet->getbdd(); // A RETRAVAILLER
+        $db  = new Bdd();
         $bdd = NEW PDO('mysql:dbname=reservationsalles;host=127.0.0.1', 'root','');
 
         if(isset($_POST['connect'])){
