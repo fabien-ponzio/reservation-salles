@@ -53,7 +53,7 @@ include '../config/fonctions.php';
 			header("Location: profil.php");
             return;
         }
-        elseif (strlen(($_POST['password'])) > 255) {
+        elseif (strlen(($_POST['newpassword'])) > 255) {
             $_SESSION['error'] = 'Votre nouveau mot de passe est trop long. Veuillez en choisir un plus court';
 			header("Location: profil.php");
             return;
