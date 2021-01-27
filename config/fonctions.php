@@ -1,6 +1,6 @@
 <?php
-//session_start();
-//require('bdd.php');
+// session_start();
+require('Db.php');
 
 
 class User{
@@ -25,9 +25,7 @@ class User{
 //--------------------------------------- CONNEXION -------------------------------------------------------//
 
     public function connect(){
-        // $db  = BDD();
-        //$objet = new Bdd(); // A RETRAVAILLER
-        //$db = $objet->getbdd(); // A RETRAVAILLER
+        $db  = new Bdd();
         $bdd = NEW PDO('mysql:dbname=reservationsalles;host=127.0.0.1', 'root','');
 
         if(isset($_POST['connect'])){
@@ -66,9 +64,6 @@ class User{
 
     public function register($login,$password){
         // secure($login);
-        if($_POST["password"]==$_POST['confirmPW']){
-            echo"coucou";
-        }
     
         if($_POST["password"]==$_POST['confirmPW']){
             echo"coucou4"; // else "Les mots de passe ne correspondent pas"
