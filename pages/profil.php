@@ -3,7 +3,7 @@
 session_start();
 //require_once('../config/bdd.php');
 
-var_dump($_SESSION['utilisateur']);
+//var_dump($_SESSION['utilisateur']);
 $path_index="../index.php";
 $path_inscription="inscription.php";
 $path_connexion="";
@@ -14,6 +14,7 @@ $path_BookingForm="reservation-form.php";
 require_once('header.php');
 
 include '../config/fonctions.php';
+
 //$user = new User($id,$login);
 //var_dump($user);
 
@@ -23,37 +24,51 @@ include '../config/fonctions.php';
     catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
-    
+     
      $login = isset($_SESSION['utilisateur']);
      var_dump($_SESSION);
 
-     if(isset($_POST['submit']) AND $_POST['newpassword'] != $_POST['confpassword']){
-         $error = 'Mot de passe et confirmation mot de passe différents';echo 'coucou4';
-     }
+    if(isset($_SESSION['utilisateur'])){
+        $login = $_SESSION['utilisateur'];
+    }
+    if(isset($_SESSION['password'])){
+        $password = $_SESSION['password'];
+    }
+    if(isset($_SESSION['id'])){
+        $id = $_SESSION['id'];
+    }
+
+    if(isset($_POST['submit'])){
+        echo 'coucou3';
+        if ($_POST['newpassword'] != $_POST['confpassword']){
+            $error = 'Mot de passe et confirmation mot de passe différents';echo 'coucou4';
+        }
+        if()
+
      else{
-         if(isset($_POST['submit'])){ echo 'coucou5';
+         //if(isset($_POST['submit'])){ echo 'coucou5';
              $newlogin=htmlspecialchars($_POST['newlogin']);
              $password = password_hash($_POST['newpassword'], PASSWORD_DEFAULT);
-             $update= $db ->prepare("UPDATE utilisateurs SET login = :newlogin, password = :newpassword WHERE login = :login");
+             $update= $db ->prepare("UPDATE utilisateurs SET login = :newlogin, password = :newpassword, id = :id WHERE id = :id");
              var_dump($update);
              $update ->execute(array(
                 'newlogin' => $newlogin,
                 'newpassword' => $password,
                 'login' => $login,
+                'id'=> $id
              ));
              $ok = 'Profil modifié';
              $_SESSION['utilisateur'] =$newlogin;
              $login = $newlogin;
             } 
-         }
+        // }
       
-   
+    }
      if (isset($ok)) {
          echo $ok;
          var_dump($_SESSION);
      }
 
-    
     
 ?>
 <!-- STYLESHEET -->
