@@ -15,7 +15,7 @@ session_start();
     require_once('../config/Db.php');
     require_once('../config/fonctions.php');
     require_once('../config/classCrenneau.php');
-
+    $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
     $title = 'Formulaire de réservation';
 
     if(isset($_POST['cancel'])){
@@ -25,32 +25,32 @@ session_start();
     
     if(isset($_POST['submit'])){
 
-        if(empty($_POST['title'])){
+        if(empty($_POST['title'])){ echo 'coucou1';
             $_SESSION['error'] = 'Vous devez entrer un titre pour votre réservation.';
             header('Location: reservation-form.php');
             return;
         }
-        elseif (strlen($_POST['title'] > 255)){
+        elseif (strlen($_POST['title'] > 255)){ echo 'coucou2';
             $_SESSION['error'] = 'Vous devez choisir un jour pour votre réservation.';
             header('Location: reservation-form.php');
             return;
         }
-        elseif (empty($_POST['startTime'])) {
+        elseif (empty($_POST['startTime'])) { echo 'coucou3';
             $_SESSION['error'] = 'Vous devez choisir une heure de début pour votre réservation.';
             header('Location: reservation-form.php');
             return;
         }
-        elseif (empty($_POST['endTime'])) {
+        elseif (empty($_POST['endTime'])) { echo 'coucou4';
             $_SESSION['error'] = 'Vous devez choisir une heure de fin pour votre réservation..';
             header('Location: reservation-form.php');
             return;
         }
-        elseif (empty($_POST['description'])) {
+        elseif (empty($_POST['description'])) { echo 'coucou5';
             $_SESSION['error'] = 'Vous devez écrire une description pour votre réservation.';
             header('Location: reservation-form.php');
             return;
         }
-        elseif (strlen($_POST['description']) > 7777) {
+        elseif (strlen($_POST['description']) > 7777) { echo 'coucou6';
             $_SESSION['error'] = 'Votre description est trop longue.';
             header('Location: reservation-form.php');
             return;
@@ -58,8 +58,8 @@ session_start();
         //LA
         else{
             $dateArray = explode('-', $_POST['date']);
-            $startTimeArray = explode('-', $_POST['startTime']);
-            $endTimeArray = explode(';', $_POST['endTime']);
+            $startTimeArray = explode(':', $_POST['startTime']);
+            $endTimeArray = explode(':', $_POST['endTime']);
 
             $dateFormatted = implode('/', $dateArray);
 
@@ -108,7 +108,7 @@ session_start();
             }
             else{
                 $dateStart = $_POST['date'] . ' ' . $_POST['startTime'] . ':00';
-                $dateEnd = $_POST['date'] . ' ' . $_POST['endtime'] . ':00';
+                $dateEnd = $_POST['date'] . ' ' . $_POST['endTime'] . ':00';
                     //LA
                 $start = new DateTime($_POST['date'], new DateTimeZone('Europe/Paris'));
                 $end = (clone $start)->modify('+1 day - 1 second');
@@ -151,7 +151,7 @@ session_start();
             (titre, description, debut, fin, id_utilisateur) 
             VALUES (:title, :description, :debut, :fin, :id_user)";
 
-            $stmt = $pdo->prepare($insert);
+            $stmt = $db->prepare($insert);
 
             $stmt->execute([
                 ':title'=> htmlentities($_POST['title']),
@@ -168,61 +168,67 @@ session_start();
         }
        
     }
-
-
-
 ?>
 
+    <!DOCTYPE html>
+    <html lang="fr">
+        <body class="container">
+            <main>
+                <h1>Formulaire de réservation de salle</h1>
+                <?php
+                    if (isset($_SESSION['error'])) {
+                        echo '<p class="error">' . $_SESSION['error'] . '</p>';
+                        unset($_SESSION['error']);
+                    }
+                    elseif ( isset($_SESSION['success']) ) {
+                        echo '<p class="success">' . $_SESSION['success'] . '</p>';
+                        unset($_SESSION['success']);
+                    }
+                    if (!isset($_SESSION['utilisateur']) || !$_SESSION['utilisateur']) :
+                        echo '<p class="error">Cette partie du site où vous pourrez réaliser une réservation de salle, ne sera visible qu\'une fois connecté</p>';
+                    else :
+                ?>
+                <p>Pour pouvoir faire une réservation, vous devez respecter quelques consignes: </p>
+                <ul>
+                    <li>Vous ne pouvez pas antidater une réservation,</li>
+                    <li>elles sont ouvertes du Lundi au Vendredi inclus, </li>
+                    <li>elles doivent débuter entre 08:00 et 18:00 inclus</li>
+                    <li>et ne peuvent finir après 19:00, </li>
+                    <li>Les réservations ne se font que par heures rondes: par exemple 16:00 et non pas 16:30 ou 16:59.</li>
+                </ul>
+                <p>
+                    Si vous ne respectez pas ces règles, votre réservation ne pourra pas être validée et un message vous indiquera quelle correction devra être apportée.
+                </p>
+                <form method="POST">
+                    <label for="title">Titre:</label>
+                    <input type="text" name="title" id="title" placeholder="Entrez votre titre ici"/><br />
 
+                    <label for="date">date:</label>
+                    <input type="date" name="date" id="date"/><br />
 
+                    <label for="timeStart">heure de début:<br /><small>de 8:00 à 19:00</small></label>
+                    <input type="time" id="timeStart" name="startTime" min="08:00" max="19:00" /><br />
 
+                    <label for="timeEnd">heure de fin:<br /><small>de 9:00 à 19:00</small></label>    
+                    <input type="time" id="timeEnd" name="endTime" min="09:00" max="19:00" /> <br />
 
- <p>Pour pouvoir faire une réservation, vous devez respecter quelques consignes: </p>
-            <ul>
-                <li>Vous ne pouvez pas antidater une réservation,</li>
-                <li>elles sont ouvertes du Lundi au Vendredi inclus, </li>
-                <li>elles doivent débuter entre 08:00 et 18:00 inclus</li>
-                <li>et ne peuvent finir après 19:00, </li>
-                <li>Les réservations ne se font que par heures rondes: par exemple 16:00 et non pas 16:30 ou 16:59.</li>
-            </ul>
-            <p>
-                Si vous ne respectez pas ces règles, votre réservation ne pourra pas être validée et un message vous indiquera quelle correction devra être apportée.
-            </p>
+                    <label for="description">Desciption:</label> <br />
+                    <textarea name="description" id="description" cols="33" rows="10" maxlength="65535"></textarea/><br />
 
-
-
-
-
-<form method="POST">
-                <label for="title">Titre:</label>
-                <input type="text" name="title" id="title" placeholder="Entrez votre titre ici"/><br />
-
-                <label for="date">date:</label>
-                <input type="date" name="date" id="date"/><br />
-
-                <label for="timeStart">heure de début:<br /><small>de 8:00 à 19:00</small></label>
-                <input type="time" id="timeStart" name="startTime" min="08:00" max="19:00" /><br />
-
-                <label for="timeEnd">heure de fin:<br /><small>de 9:00 à 19:00</small></label>    
-                <input type="time" id="timeEnd" name="endTime" min="09:00" max="19:00" /> <br />
-
-                <label for="description">Desciption:</label> <br />
-                <textarea name="description" id="description" cols="33" rows="10" maxlength="65535"></textarea/><br />
-
-                <input type="submit" name='cancel' value="annuler">
-                <input type="reset" name='reset' value="Réinitialiser">
-                <input type="submit" name='submit' value="Valider">
-</form>
-
-
-
-
-
-
-
-<?php
-$path_img_footer1 = '../images/logobb.png';
-$path_img_footer2 ='';
-$path_footer='../CSS/footer.css';
- require_once('footer.php');
- ?>
+                    <input type="submit" name='cancel' value="annuler">
+                    <input type="reset" name='reset' value="Réinitialiser">
+                    <input type="submit" name='submit' value="Valider">
+                </form>
+                <?php
+                    endif;
+                ?>
+            </main>
+            
+            <?php
+        $path_img_footer1 = '../images/logobb.png';
+        $path_img_footer2 ='';
+        $path_footer='../CSS/footer.css';
+        require_once('footer.php');
+        ?>
+        </body>
+    </html>
