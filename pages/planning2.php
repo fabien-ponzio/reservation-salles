@@ -60,7 +60,7 @@ foreach ($events as $k => $event){
         for($x=0; $x<8; $x++){
             if($y==0 AND $x > 0){
                 echo "<th>";
-                echo $actWeek->getDays($x -1)." ". intval($actWeek->mondayDate + $x-1);
+                echo $actWeek->getDays($x -1)." ". intval($acteek->mondayDate + $x-1);
                 echo "</th>";
             }
             elseif($x==0 AND $y > 0){
