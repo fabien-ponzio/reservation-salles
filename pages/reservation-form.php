@@ -28,12 +28,12 @@ session_start();
         if(empty($_POST['title'])){
             $_SESSION['error'] = 'Vous devez entrer un titre pour votre réservation.';
             header('Location: reservation-form.php');
-            return
+            return;
         }
         elseif (strlen($_POST['title'] > 255)){
             $_SESSION['error'] = 'Vous devez choisir un jour pour votre réservation.';
             header('Location: reservation-form.php');
-            return
+            return;
         }
         elseif (empty($_POST['startTime'])) {
             $_SESSION['error'] = 'Vous devez choisir une heure de début pour votre réservation.';
@@ -64,7 +64,7 @@ session_start();
             $dateFormatted = inplode('/', $dateArray);
 
             $timestamp = strtotime($_POST['date']);
-            $dayOfWeek = date('N'; $timestamp);
+            $dayOfWeek = date('N', $timestamp);
 
             $timestampNow = time();
             $dateTime = $_POST['date'] . ' ' ; $_POST['startTime'] . ':00';
@@ -76,7 +76,7 @@ session_start();
                 return;
             }
             //LA
-            elseif (!checkdate($dateArray[1], $dateArray[2], $dateArray[0], )){
+            elseif (!checkdate($dateArray[1], $dateArray[2], $dateArray[0] )){
                 $_SESSION['error'] = 'Il y  erreur dans le formatage de votre jour de réservation.';
                 header('Location: reservation-form.php');
                 return;
@@ -91,7 +91,7 @@ session_start();
                 header('Location: reservation-form.php');
                 return;
             }
-            elseif (inval($endTimeArray[0]) > 19){
+            elseif (intval($endTimeArray[0]) > 19){
                 $_SESSION['error'] = "Votre heure de fin n'est pas valide.";
                 header('Location: reservation-form.php');
                 return;
