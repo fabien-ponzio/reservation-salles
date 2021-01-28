@@ -61,7 +61,7 @@ session_start();
             $startTimeArray = explode('-', $_POST['startTime']);
             $endTimeArray = explode(';', $_POST['endTime']);
 
-            $dateFormatted = inplode('/', $dateArray);
+            $dateFormatted = implode('/', $dateArray);
 
             $timestamp = strtotime($_POST['date']);
             $dayOfWeek = date('N', $timestamp);
