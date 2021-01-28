@@ -53,3 +53,8 @@ body{
         justify-content: center;
         min-height: 70vh;
 }
+
+#hello_profil{
+    font-family: 'Alfa Slab One', cursive;
+    text-align: center;
+}

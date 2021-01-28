@@ -26,7 +26,7 @@ include '../config/fonctions.php';
     }
      
      $login = isset($_SESSION['utilisateur']);
-     var_dump($_SESSION);
+    //  var_dump($_SESSION);
 
     if(isset($_SESSION['utilisateur'])){
         $login = $_SESSION['utilisateur'];
@@ -76,7 +76,7 @@ include '../config/fonctions.php';
              $newlogin=htmlspecialchars($_POST['newlogin']);
              $password = password_hash($_POST['newpassword'], PASSWORD_DEFAULT);
              $update= $db ->prepare("UPDATE utilisateurs SET login = :newlogin, password = :newpassword, id = :id WHERE id = :id");
-             var_dump($update);
+            //  var_dump($update);
              $update ->execute(array(
                 'newlogin' => $newlogin,
                 'newpassword' => $password,
@@ -91,8 +91,8 @@ include '../config/fonctions.php';
       
     }
      if (isset($ok)) {
-         echo $ok;
-         var_dump($_SESSION);
+         echo " <div id='hello_profil'> Bonjour ". strtoupper($_SESSION['utilisateur']) ." prêt à reserver une salle ? </div>";
+        //  var_dump($_SESSION);
      }
 
     
