@@ -12,9 +12,9 @@ session_start();
     require_once('header.php');
 
 
-    require_once('Db.php');
+    require_once('../config/Db.php');
     require_once('../config/fonctions.php');
-    require_once('../config/classCrenneau');
+    require_once('../config/classCrenneau.php');
 
     $title = 'Formulaire de réservation';
 
@@ -112,6 +112,57 @@ session_start();
                     //LA
                 $start = new DateTime($_POST['date'], new DateTimeZone('Europe/Paris'));
                 $end = (clone $start)->modify('+1 day - 1 second');
+
+                $events = new Creneaux();
+                $eventsForDay = $events->getEventsBetween($start, $end);
+
+               if (!empty($eventsForDay)){
+                   $bookingStart = strtotime($dateStart);
+                   $bookingDateEnd = strtotime($dateEnd);
+
+                foreach($eventsForDay as $events) {
+                    $eventDateStart = strtotime($events['debut']);
+                    $eventsDateEnd = strtotime($events['fin'] . '- 1 second');
+
+                    if($bookingStart > $eventDateStart && $bookingStart < $eventDateEnd){
+                        $_SESSION['error'] = 'Votre réservation ne peut pas être validée car une autre réservation existe déjà, commençant avant la votre dans votre créneau de temps.';
+                        header('Location: reservation-form.php');
+                        return; 
+                    }
+                    elseif ($bookingEnd > $enventDateStart && $bookingEnd < $enventDateEnd){
+                        $_SESSION['error'] = 'Votre réservation ne peut pas être validée car une autre réservation existe déjà, commençant avant la votre dans votre créneau de temps.';
+                        header('Location: reservation-form.php');
+                        return; 
+                    }
+                    elseif ($bookingStart > $eventDateStart && $bookingEnd < $eventsDateEnd){
+                        $_SESSION['error'] = 'Votre réservation ne peut pas être validée car une autre réservation plus longue existe déjà dans votre créneau.';
+                        header('Location: reservation-form.php');
+                        return;
+                    }
+                    elseif ($bookingStart < $eventDateStart && $bookingEnd > $enventDateEnd){
+                        $_SESSION['error'] = 'Votre réservation ne peut pas être validée car une autre réservation plus longue existe déjà dans votre créneau.';
+                        header('Location: reservation-form.php');
+                        return;
+                    }
+                }
+            }
+
+            $insert = "INSERT INTO reservations 
+            (titre, description, debut, fin, id_utilisateur) 
+            VALUES (:title, :description, :debut, :fin, :id_user)";
+
+            $stmt = $pdo->prepare($insert);
+
+            $stmt->execute([
+                ':title'=> htmlentities($_POST['title']),
+                ':description'=> htmlentities($_POST['description']),
+                ':debut'=>$dateStart,
+                ':fin'=>$dateEnd,
+                ':id_user'=> $_SESSION['id']
+            ]);
+
+            $_SESSION['succes'] = "Votre reservation a reussi.";
+
             }
 
         }
