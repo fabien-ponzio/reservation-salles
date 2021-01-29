@@ -103,11 +103,11 @@ include '../config/fonctions.php';
     <h1>Mettez à jour vos identifiants !</h1>
 <form id="form_profile" action="profil.php" method="POST" id="form-pro">
 
-    <label for="newlogin"></label>
+    <label for="newlogin">Nouveau pseudo</label>
     <input class="form_input" type="text"  name="newlogin" placeholder="Login"> <br>
-    <label for="oldpassword"></label>
+    <label for="oldpassword">New password</label>
     <input class="form_input" type="password" name="newpassword" placeholder="New password"><br>
-    <label for="newpassword"></label>
+    <label for="newpassword">Confirm password</label>
     <input class="form_input" type="password" name="confpassword" placeholder="Confirm Password"><br>
     <input id="profile_input" type="submit" name="submit" value="Envoyer" class='boutton'><br>
 

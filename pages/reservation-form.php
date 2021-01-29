@@ -179,6 +179,9 @@ session_start();
             <main>
                 <h1>Formulaire de réservation de salle</h1>
                 <?php
+                    if(isset($_SESSION['login'])){
+                        echo " <div id='hello_profil'> Bonjour ". strtoupper($_SESSION['utilisateur']) ." reservez votre sale et bouclier ici. </div>";
+                    }
                     if (isset($_SESSION['error'])) {
                         echo '<p class="error">' . $_SESSION['error'] . '</p>';
                         unset($_SESSION['error']);
@@ -194,7 +197,7 @@ session_start();
                 <article id="BookingRules">
                 <p>Pour pouvoir faire une réservation, vous devez respecter quelques consignes: </p>
                 <ul>
-                    <li>Vous ne pouvez pas antidater une réservation,</li>
+                    <li>Vous ne pouvez pas antidater une réservation, ni reverver le jour meme,</li>
                     <li>elles sont ouvertes du Lundi au Vendredi inclus, </li>
                     <li>elles doivent débuter entre 08:00 et 18:00 inclus</li>
                     <li>et ne peuvent finir après 19:00, </li>
