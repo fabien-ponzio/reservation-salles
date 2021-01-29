@@ -36,7 +36,7 @@ $path_BookingForm="pages/reservation-form.php";
 </head>
 <body>
 <?php require_once('pages/header.php');
-var_dump(__DIR__);?>
+// var_dump(__DIR__);?>
 <main>
     <section>
         <article id="titreindex">
