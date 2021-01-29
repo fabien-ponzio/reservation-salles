@@ -1,68 +1,83 @@
-body{
-    background-color: #ffcc29;
+body {
+  background-color: #ffcc29;
 }
-h1{
-    font-family: 'Alfa Slab One', cursive;
-    margin-bottom: 5%;
-    margin-top: 5%;
-    text-align: center;
-}
-
-#BookingRules{
-    font-family: 'Arimo', sans-serif;
-    font-size: small; 
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-    /* align-items: center; */
+h1 {
+  font-family: "Alfa Slab One", cursive;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  text-align: center;
 }
 
-#BookingRules ul{
-    list-style-type: none;
+#hello_profil {
+  text-align: center;
+  font-family: "Alfa Slab One", cursive;
+  text-align: center;
 }
 
-label{
-    font-family: 'Arimo', sans-serif;
+#BookingRules {
+  font-family: "Arimo", sans-serif;
+  font-size: small;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  /* align-items: center; */
 }
-form{
-    padding:5px;
-    text-align: center;
-}
-
-#timeStart{
-
-}
-
-#timeEnd{
-
+textarea {
+  resize: none;
 }
 
-#description{
-
+#BookingRules ul {
+  list-style-type: none;
 }
 
-.BookingInput{
-    align-items: center;
-    margin-bottom: 5px;
-    border: 2px solid black; 
-    color : black; 
+label {
+  font-family: "Arimo", sans-serif;
+}
+form {
+  padding: 5px;
+  text-align: center;
+}
+
+#timeStart {
+}
+
+#timeEnd {
+}
+
+#description {
+}
+
+.BookingInput {
+  align-items: center;
+  margin-bottom: 5px;
+  border: 2px solid black;
+  color: black;
+  border-top-left-radius: 2em 0.5em;
+  border-top-right-radius: 1em 3em;
+  border-bottom-right-radius: 4em 0.5em;
+  border-bottom-left-radius: 1em 3em;
+  background-color: white;
+}
+
+#bigbox {
+  width: 20vw;
+  align-items: center;
+  margin-bottom: 5px;
+  border: 2px solid black;
+  margin-left: 40%;
+  color: black;
+  border-top-left-radius: 2em 0.5em;
+  border-top-right-radius: 1em 3em;
+  border-bottom-right-radius: 4em 0.5em;
+  border-bottom-left-radius: 1em 3em;
+  margin-bottom: 15px;
+}
+
+#logout{
+    color: black;
     border-top-left-radius: 2em 0.5em;
-    border-top-right-radius: 1em 3em; 
-    border-bottom-right-radius: 4em 0.5em; 
+    border-top-right-radius: 1em 3em;
+    border-bottom-right-radius: 4em 0.5em;
     border-bottom-left-radius: 1em 3em;
     background-color: white;
-}
-
-#bigbox{
-    width: 20vw;
-    align-items: center;
-    margin-bottom: 5px;
-    border: 2px solid black; 
-    margin-left: 40%;
-    color : black; 
-    border-top-left-radius: 2em 0.5em;
-    border-top-right-radius: 1em 3em; 
-    border-bottom-right-radius: 4em 0.5em; 
-    border-bottom-left-radius: 1em 3em;
-    margin-bottom: 15px;
 }

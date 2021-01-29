@@ -51,16 +51,18 @@ foreach ($events as $k => $event){
     <div class="calendarnav">
     <!-- on applique la methode previous week sur les jours -->
         <a href="planning.php?day=<?= $actWeek->previousWeek()->day;?>&month=<?= $actWeek->previousWeek()->month; ?> &year=<?= $actWeek->previousWeek()->year; ?>"></a>
-        <h1>planning: <?= $actWeek->ToString(); ?></h1>
+        <h1>Planning: <?= $actWeek->ToString(); ?></h1>
         <a href="planning.php?day=<?= $actWeek->nextWeek()->day;?>&month=<?= $actWeek->nextWeek()->month; ?> &year=<?= $actWeek->nextWeek()->year; ?>"></a>
     </div>
     <table>
+
     <!-- colgroup permet de spécifier une colonne ou groupe de colonnes dans une table -->
     <colgroup>
         <col>
         <col span="5">
         <col span="2">
     </colgroup>
+
     <?php 
     // GENERATION DU TABLEAU 
     //BOUCLE POUR LIGNES // 11H
@@ -154,7 +156,7 @@ foreach ($events as $k => $event){
 
 <?php
 $path_img_footer1 = '../images/logobbYellow.png';
-$path_img_footer2 ='';
+$path_img_footer2 ='../images/logotomate.PNG';
 $path_footer='../CSS/footer.css';
  require_once('footer.php'); 
 ?>

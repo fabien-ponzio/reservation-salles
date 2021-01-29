@@ -179,7 +179,7 @@ session_start();
                 <h1>Formulaire de réservation de salle</h1>
                 <?php
                     if(isset($_SESSION['utilisateur'])){
-                        echo " <div id='hello_profil'> Bonjour ". strtoupper($_SESSION['utilisateur']) ." reservez votre sale et bouclier ici. </div>";
+                        echo " <div id='hello_profil'> Bonjour ". strtoupper($_SESSION['utilisateur']) ." reservez votre salle et bouclier ici. </div>";
                     }
                     if (isset($_SESSION['error'])) {
                         echo '<p class="error">' . $_SESSION['error'] . '</p>';

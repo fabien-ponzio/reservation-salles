@@ -43,16 +43,27 @@ else {
     else :
 ?>
 
-    <article>
-    <p><span>Réservation réalisée par</span>: <span><?= $eventInfos['login']; ?></span></p>
-    <p><span>titre</span>: <span><?= $eventInfos['login']; ?>"</span></p>
-    <p><span>description</span>:<br>
-        <?= $eventInfos['description']; ?>
-    </p>
-    <p>Commence le <?= $formated->format($timestampStart) ?>, <br>
-        et finit le <?= $formated->format($timestampEnd); ?>.
-    </p>
+    <section id="booking">
+
+    <article class="Pbooking">
+    <p>Réservation réalisée par:</p> <?= $eventInfos['login']; ?>
     </article>
+
+    <article class="Pbooking">
+    <p>titre:</p> <?= $eventInfos['login']; ?>"
+    </article>
+
+    <article class="Pbooking">
+    <p>description:</p><br>
+        <?= $eventInfos['description']; ?>
+    </article>
+
+    <article class="Pbooking">
+    <p>Commence le </p> <?= $formated->format($timestampStart) ?>, <br>
+    <p> et finit le </p> <?= $formated->format($timestampEnd); ?>.
+    </article>
+
+    </section>
     <?php endif; ?>
 </main>
 
