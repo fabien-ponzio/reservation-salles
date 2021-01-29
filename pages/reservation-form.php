@@ -58,7 +58,6 @@ session_start();
         //LA
         else{
             $dateArray = explode('-', $_POST['date']);
-            var_dump($dateArray);
             
             $startTimeArray = explode(':', $_POST['startTime']);
             $endTimeArray = explode(':', $_POST['endTime']);
@@ -136,7 +135,7 @@ session_start();
                         header('Location: reservation-form.php');
                         return; 
                     }
-                    elseif ($bookingStart > $eventDateStart && $bookingEnd < $eventsDateEnd){
+                    elseif ($bookingStart > $eventDateStart && $bookingEnd < $eventDateEnd){
                         $_SESSION['error'] = 'Votre réservation ne peut pas être validée car une autre réservation plus longue existe déjà dans votre créneau.';
                         header('Location: reservation-form.php');
                         return;
@@ -179,7 +178,7 @@ session_start();
             <main>
                 <h1>Formulaire de réservation de salle</h1>
                 <?php
-                    if(isset($_SESSION['login'])){
+                    if(isset($_SESSION['utilisateur'])){
                         echo " <div id='hello_profil'> Bonjour ". strtoupper($_SESSION['utilisateur']) ." reservez votre sale et bouclier ici. </div>";
                     }
                     if (isset($_SESSION['error'])) {
