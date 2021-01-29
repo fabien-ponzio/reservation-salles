@@ -13,7 +13,6 @@ $path_BookingForm="reservation-form.php";
 require_once('header.php');
 ?>
 
-<!-- GUILLAUME : AIDE MOI A AFFICHER UNE RESA /  -->
  <?php 
  session_start();
 
