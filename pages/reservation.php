@@ -2,10 +2,10 @@
 // CHEMINS
 $path_index="../index.php";
 $path_inscription="inscription.php";
-$path_connexion="";
+$path_connexion="connexion.php";
 $path_profil="profil.php";
 $path_planning="planning.php";
-$path_booking="reservation.php";
+$path_booking="";
 $path_BookingForm="reservation-form.php";
 // STYLESHEET HEADER 
 require_once('header.php');
