@@ -38,17 +38,17 @@ class Creneaux {
         $events = $this->getEventsBetween($start, $end);
         $days = [];
         foreach ($events as $event){
-            $day[$events['debut']] = $event;
+            $days[$event['debut']] = $event;
             
             $diff = new Creneaux;
             $length = $diff->timeLength($event['debut'], $event['fin']);
 
-            $day[$event['debut']]['length'] = $length;
+            $days[$event['debut']]['length'] = $length;
             $dateStart = new DateTime($event['debut']);
             $dateDay = $dateStart->format('N');
             $timeHour = $dateStart->format('G');
             $case = ($timeHour - 7) . '-' . $dateDay;
-            $day[$event['debut']]['case'] = $case;
+            $days[$event['debut']]['case'] = $case;
             $lengthEvents[$case] = $length;
 
         }
@@ -60,11 +60,11 @@ class Creneaux {
         $length = date_diff($tempOne, $tempTwo);
         return $length->h;
     }
-    public function getEvent(int $id): array {
-        $sql = "SELECT reservations.id, reservations.titre, reservations.description, reservationdebut, reservation.fin, utilisateurs.login
+    public function getEventById(int $id): array {
+        $sql = "SELECT reservations.id, reservations.titre, reservations.description, reservations.debut, reservations.fin, utilisateurs.login
             FROM reservations JOIN utilisateurs
-            WHERE reservation.id = :id
-            AND utilisateur.id = reservation.id_utilisateur";
+            WHERE reservations.id = :id
+            AND utilisateurs.id = reservations.id_utilisateur";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([':id'=>$id]);
         $results = $stmt->fetch(PDO::FETCH_ASSOC);

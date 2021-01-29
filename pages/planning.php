@@ -29,7 +29,7 @@ $actWeek = new Week($_GET['day'] ?? null, $_GET['month'] ?? null, $_GET['year'] 
 $startingDayWeek = $actWeek->getFirstday();
 //modify permet de modifier l'objet "+5days -1 second"
 $end =(clone $startingDayWeek)->modify('+ 5 days - 1 second'); 
-var_dump($startingDayWeek);
+// var_dump($startingDayWeek, $end);
 // valeur de retour en faisant un var dump
 // qui permet d'envoyer des conditions à partir de là 
 // $eventsFromDB est un nouvel objet de la class creneau
@@ -116,15 +116,17 @@ foreach ($events as $k => $event){
                 if (isset($cellLength) && $cellLength !== FALSE) {
                     //fusion des cellules en fonction du temps de l'event 
                     echo '<td rowspan="'. $cellLength .'"';
-                    echo ' style="color:white;text-shadow: 1px 1px 1px black; background-color:' . randomHsla() . '">';
+                    echo ' style="color:white;text-shadow: 1px 1px 1px black; background-color:' . '">';
                     echo "<a href=\"reservation.php?id=" . $currentEvent['id'] . '" class=table_link>';
                     echo '<span>' . $currentEvent['login'] . '</span>', '<br/>'; 
                     echo '</a>'; 
                     echo '</td>';
 
-                    $tempY = $y + 1; //???????????????
+                    //tant que la reservation fait plus d'une heure on dit que la case d'en dessous = FALSE
+                    $tempY = $y + 1; 
                     while ($cellLength > 1) {
                        $tableCell[$tempY . '-' . $x] = FALSE; 
+                       // on se prépare à checker la case d'en dessous
                        $tempY++; 
                        $cellLength--;
                     }

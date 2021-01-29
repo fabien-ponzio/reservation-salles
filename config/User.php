@@ -31,6 +31,7 @@ class User_connect
                         $this->password
              
                 ];
+                
                 header('location:../pages/profil.php');
                 return $_SESSION['utilisateur'];
             } else {
