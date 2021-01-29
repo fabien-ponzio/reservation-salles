@@ -20,8 +20,6 @@ $path_BookingForm="reservation-form.php";
 require_once('header.php');
 ?>
 
-// HEADER - FOOTER 
-
 <?php
 //$db = new Db();
 //var_dump($db);
