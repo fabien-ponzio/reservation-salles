@@ -35,7 +35,8 @@ $path_BookingForm="pages/reservation-form.php";
     <title>Document</title>
 </head>
 <body>
-<?php require_once('pages/header.php');?>
+<?php require_once('pages/header.php');
+var_dump(__DIR__);?>
 <main>
     <section>
         <article id="titreindex">
@@ -43,18 +44,17 @@ $path_BookingForm="pages/reservation-form.php";
         </article>
     </section>
     <article class="box-slide">
-                <section class="slide-show">
-                 <a href="#" class="a-slide"> <img src="images/Bouclier-rond.png" class="img-slide" alt="logo"> </a>
-                 <a href="#" class="a-slide"> <img src="images/Bouclier_orque.png" class="img-slide" alt="logo"> </a>
-                 <a href="#" class="a-slide"> <img src="images/bouclierhyrule.png" class="img-slide" alt="logo"> </a>
-                 <a href="#" class="a-slide"> <img src="images/bouclier_fantaisie.png" class="img-slide" alt="logo"> </a>
-                 <a href="#" class="a-slide"> <img src="images/bouclier_viking.png" class="img-slide" alt="logo"> </a>
-                 <a href="#" class="a-slide"> <img src="images/bouclier_antique.png" class="img-slide" alt="logo"> </a>
-                 <a href="#" class="a-slide"> <img src="images/bouclier_america.png" class="img-slide" alt="logo"> </a>
-                 <a href="#" class="a-slide"> <img src="images/Furyshield-removebg-preview.png" class="img-slide" alt="logo"> </a>
-                 <a href="#" class="a-slide"> <img src="images/Ebonyshield.png" class="img-slide" alt="logo"> </a>
-
-                </section>
+        <section class="slide-show">
+            <a href="#" class="a-slide"> <img src="images/Bouclier-rond.png" class="img-slide" alt="logo"> </a>
+            <a href="#" class="a-slide"> <img src="images/Bouclier_orque.png" class="img-slide" alt="logo"> </a>
+            <a href="#" class="a-slide"> <img src="images/bouclierhyrule.png" class="img-slide" alt="logo"> </a>
+            <a href="#" class="a-slide"> <img src="images/bouclier_fantaisie.png" class="img-slide" alt="logo"> </a>
+            <a href="#" class="a-slide"> <img src="images/bouclier_viking.png" class="img-slide" alt="logo"> </a>
+            <a href="#" class="a-slide"> <img src="images/bouclier_antique.png" class="img-slide" alt="logo"> </a>
+            <a href="#" class="a-slide"> <img src="images/bouclier_america.png" class="img-slide" alt="logo"> </a>
+            <a href="#" class="a-slide"> <img src="images/Furyshield-removebg-preview.png" class="img-slide" alt="logo"> </a>
+            <a href="#" class="a-slide"> <img src="images/Ebonyshield.png" class="img-slide" alt="logo"> </a>
+        </section>
 </main>
 <?php
 $path_img_footer1 = 'images/logobbYellow.png';

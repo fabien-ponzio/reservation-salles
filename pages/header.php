@@ -48,8 +48,9 @@
     <?php
         if (isset($_POST['logout'])) {
             session_unset();
-            session_destroy();     
-            header('location:../index.php');
+            session_destroy();
+            // YESSIRRRRRRRRRR
+            header('location:' . $path_index . 'index.php');
             };
     ?>
     </ul>

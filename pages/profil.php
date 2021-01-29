@@ -2,7 +2,7 @@
 
 session_start();
 
-$path_index="../index.php";
+$path_index="../";
 $path_inscription="inscription.php";
 $path_connexion="";
 $path_profil="profil.php";
