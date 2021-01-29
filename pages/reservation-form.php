@@ -58,6 +58,8 @@ session_start();
         //LA
         else{
             $dateArray = explode('-', $_POST['date']);
+            var_dump($dateArray);
+            
             $startTimeArray = explode(':', $_POST['startTime']);
             $endTimeArray = explode(':', $_POST['endTime']);
 
@@ -86,7 +88,7 @@ session_start();
                 header('Location: reservation-form.php');
                 return;
             }
-            elseif (intval($startTimeArray[0]) > 8 || intval($startTimeArray[0]) > 18){
+            elseif (intval($startTimeArray[0]) < 8 || intval($startTimeArray[0]) > 18){
                 $_SESSION['error'] = "Votre heure de début n'est pas valide.";
                 header('Location: reservation-form.php');
                 return;
@@ -118,18 +120,18 @@ session_start();
 
                if (!empty($eventsForDay)){
                    $bookingStart = strtotime($dateStart);
-                   $bookingDateEnd = strtotime($dateEnd);
+                   $bookingEnd = strtotime($dateEnd);
 
                 foreach($eventsForDay as $events) {
                     $eventDateStart = strtotime($events['debut']);
-                    $eventsDateEnd = strtotime($events['fin'] . '- 1 second');
+                    $eventDateEnd = strtotime($events['fin'] . '- 1 second');
 
                     if($bookingStart > $eventDateStart && $bookingStart < $eventDateEnd){
                         $_SESSION['error'] = 'Votre réservation ne peut pas être validée car une autre réservation existe déjà, commençant avant la votre dans votre créneau de temps.';
                         header('Location: reservation-form.php');
                         return; 
                     }
-                    elseif ($bookingEnd > $enventDateStart && $bookingEnd < $enventDateEnd){
+                    elseif ($bookingEnd > $eventDateStart && $bookingEnd < $eventDateEnd){
                         $_SESSION['error'] = 'Votre réservation ne peut pas être validée car une autre réservation existe déjà, commençant avant la votre dans votre créneau de temps.';
                         header('Location: reservation-form.php');
                         return; 
