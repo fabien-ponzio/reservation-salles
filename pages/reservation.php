@@ -50,7 +50,7 @@ else {
     </article>
 
     <article class="Pbooking">
-    <p>titre:</p> <?= $eventInfos['login']; ?>"
+    <p>titre:</p> <?= $eventInfos['titre']; ?>
     </article>
 
     <article class="Pbooking">
