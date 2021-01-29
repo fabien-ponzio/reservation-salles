@@ -90,10 +90,10 @@ include '../config/fonctions.php';
 
       
     }
-     if (isset($ok)) {
+    //  if (isset($ok)) {
          echo " <div id='hello_profil'> Bonjour ". strtoupper($_SESSION['utilisateur']) ." prêt à reserver une salle ? </div>";
         //  var_dump($_SESSION);
-     }
+    //  }
 
     
 ?>

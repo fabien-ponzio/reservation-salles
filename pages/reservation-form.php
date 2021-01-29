@@ -235,8 +235,8 @@ session_start();
             </main>
             
             <?php
-        $path_img_footer1 = '../images/logobb.png';
-        $path_img_footer2 ='';
+        $path_img_footer1 = '../images/logobbYellow.png';
+        $path_img_footer2 ='../images/logotomate.PNG';
         $path_footer='../CSS/footer.css';
         require_once('footer.php');
         ?>
