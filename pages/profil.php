@@ -1,9 +1,7 @@
 <?php
 
 session_start();
-//require_once('../config/bdd.php');
 
-//var_dump($_SESSION['utilisateur']);
 $path_index="../index.php";
 $path_inscription="inscription.php";
 $path_connexion="";
@@ -15,8 +13,7 @@ require_once('header.php');
 
 include '../config/fonctions.php';
 
-//$user = new User($id,$login);
-//var_dump($user);
+
 
     try{
         $db = new PDO ('mysql:host=localhost;dbname=reservationsalles','root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
@@ -26,7 +23,7 @@ include '../config/fonctions.php';
     }
      
      $login = isset($_SESSION['utilisateur']);
-    //  var_dump($_SESSION);
+
 
     if(isset($_SESSION['utilisateur'])){
         $login = $_SESSION['utilisateur'];
@@ -76,7 +73,7 @@ include '../config/fonctions.php';
              $newlogin=htmlspecialchars($_POST['newlogin']);
              $password = password_hash($_POST['newpassword'], PASSWORD_DEFAULT);
              $update= $db ->prepare("UPDATE utilisateurs SET login = :newlogin, password = :newpassword, id = :id WHERE id = :id");
-            //  var_dump($update);
+
              $update ->execute(array(
                 'newlogin' => $newlogin,
                 'newpassword' => $password,
@@ -90,10 +87,9 @@ include '../config/fonctions.php';
 
       
     }
-    //  if (isset($ok)) {
+
          echo " <div id='hello_profil'> Bonjour ". strtoupper($_SESSION['utilisateur']) ." prêt à reserver une salle ? </div>";
-        //  var_dump($_SESSION);
-    //  }
+
 
     
 ?>

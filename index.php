@@ -12,7 +12,7 @@ $path_planning="pages/planning.php";
 $path_booking="pages/reservation.php";
 $path_BookingForm="pages/reservation-form.php";
 
-//var_dump($_SESSION['utilisateur']['id'])
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

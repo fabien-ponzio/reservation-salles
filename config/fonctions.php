@@ -39,8 +39,8 @@ class User{
                 $GetAllInfo->execute(); 
             
                 $AllUserInfo = $GetAllInfo->fetch(PDO::FETCH_ASSOC);
-                var_dump($AllUserInfo['password']);
-                var_dump($password);
+                // var_dump($AllUserInfo['password']);
+                // var_dump($password);
                     if (!empty($AllUserInfo)) {
                         //var_dump(password_verify($password, $AllUserInfo['password']));
                         if (password_verify($password, $AllUserInfo['password'])) {

@@ -13,13 +13,12 @@ require '../pages/header.php';
 
 
 $user = new User();
-// var_dump($newuser);
+
 if (isset($_POST["register"])) {
     $login=$_POST["login"];
     $password=$_POST["password"];
     $confirmPW=$_POST["confirmPW"];
-    var_dump($password);
-    var_dump($login);
+
 
     $user->register($login,$password,$confirmPW);
     var_dump($_SESSION["error"]);

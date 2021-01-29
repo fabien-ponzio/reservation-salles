@@ -46,6 +46,7 @@ foreach ($events as $k => $event){
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+<link rel="stylesheet" href="../CSS/planning.css">
 <body>
     <main>
     <div class="calendarnav">

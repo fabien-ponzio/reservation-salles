@@ -20,19 +20,6 @@ $path_BookingForm="reservation-form.php";
 require_once('header.php');
 ?>
 
-<?php
-//$db = new Db();
-//var_dump($db);
-//$user = new User_connect();
-//var_dump($user);
-/*if (isset($_POST['login']) && isset ($_POST['password'])){ 
-
-    $login = $_POST['login'];
-    $password = $_POST['password'];
-
-    //$connexion = $user-> connectUser($login,$password);
-}*/
-?>
 
 <!DOCTYPE html>
 <html lang="en">
