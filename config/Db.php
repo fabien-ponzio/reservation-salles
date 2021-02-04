@@ -14,7 +14,7 @@ class Bdd
     $this->host = "localhost";
     $this->username = "root";
     $this->password = "";
-    $this->database = "reservationsalles";
+    $this->database = "newproject";
     }
 
     public function connectDb()
