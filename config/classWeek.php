@@ -45,8 +45,7 @@ public function __construct(?int $day = null, ?int $month = null, ?int $year = n
     $this->day = $day;
     $this->month = $month;
     $this->year = $year;
-    $this->currentDayString = $this->day[$this->currentDay - 1];
-    $this->monthString = $this->month[$this->month - 1];
+    
 
 }
 
